@@ -1,0 +1,27 @@
+{
+  "name": "portfolio-2024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run open-browser && astro dev",
+    "start": "npm run open-browser && astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "open-browser": "open http://localhost:4321/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyleconrad/portfolio-2024.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyleconrad/portfolio-2024/issues"
+  },
+  "homepage": "https://github.com/kyleconrad/portfolio-2024#readme",
+  "dependencies": {
+    "astro": "^4.12.2"
+  }
+}
