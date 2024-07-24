@@ -22,9 +22,9 @@
 	// --transition: 0.15s;
 
 
-	// @each $color, $value in $colors {
-	// 	--#{ $color }: #{ $value };
-	// }
+	@each $color, $value in $colors {
+		--#{ $color }: #{ $value };
+	}
 }
 
 
@@ -139,15 +139,15 @@ div {
 //// Backgrounds, Fills, Borders
 @each $color, $value in $colors {
 	.bkg--#{$color} {
-		background-color: color( $color );
+		background-color: var( --#{ $color } );
 	}
 
 	.fill--#{$color} {
-		fill: color( $color );
+		fill: var( --#{ $color } );
 	}
 
 	.border--#{$color} {
-		border-color: color( $color );
+		border-color: var( --#{ $color } );
 	}
 }
 

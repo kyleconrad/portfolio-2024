@@ -27,11 +27,12 @@
 
 h1 {
     font-family: $font-headline;
+    font-stretch: 2.5;
     font-variation-settings: 'wdth' 2.5;
     font-size: 600px;
     text-transform: uppercase;
-    leading-trim: both;
-    text-edge: cap alphabetic;
+    // leading-trim: both;
+    // text-edge: cap alphabetic;
 }
 
 
@@ -57,14 +58,6 @@ h1 {
 //// Text colors
 @each $color, $value in $colors {
     .text--#{$color} {
-        color: color( $color );
-    }
-
-    .text--#{$color}::placeholder {
-        color: rgba( var( --#{ $color } ), 0.5 );
-    }
-
-    .text--#{$color}:focus::placeholder {
-        color: transparent;
+        color: var( --#{ $color } );
     }
 }

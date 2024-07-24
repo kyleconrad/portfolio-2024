@@ -11,7 +11,7 @@ const home = await contentfulClient.getEntry( '3g2iyD1SfySxM8OnHB2d37' );
 <html lang="en">
     <Head title={ home.fields.metadataTitle } description={ home.fields.metadataDescription } />
     
-    <body>
+    <body class="bkg--fill">
 		<Home content={ home } />
     </body>
 </html>
