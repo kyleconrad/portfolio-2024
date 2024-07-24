@@ -1,0 +1,18 @@
+---
+import HeroHome from '../modules/HeroHome.astro';
+import CaseStudy from '../layouts/CaseStudy.astro';
+import Footer from '../components/Footer.astro';
+
+const { content } = Astro.props;
+
+// console.log( {content} );
+---
+<main>
+    <HeroHome content={ content.fields.hero } />
+
+    { content.fields.caseStudies.map( ( caseStudy ) => (
+        <CaseStudy content={ caseStudy } />
+    )) }
+
+    <Footer content={ content.fields.about } />
+</main>

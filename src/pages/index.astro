@@ -1,17 +1,17 @@
 ---
-// Welcome to Astro! Everything between these triple-dash code fences
-// is your "component frontmatter". It never runs in the browser.
-console.log('This runs in your terminal, not the browser!');
+import { contentfulClient } from "../lib/contentful";
+
+import Head from '../components/Head.astro';
+import Home from '../layouts/Home.astro';
+
+const home = await contentfulClient.getEntry( '3g2iyD1SfySxM8OnHB2d37' );
+
+// console.log( home );
 ---
-<!-- Below is your "component template." It's just HTML, but with
-    some magic sprinkled in to help you build great templates. -->
-<html>
-  <body>
-    <h1>Hello, World!</h1>
-  </body>
+<html lang="en">
+    <Head title={ home.fields.metadataTitle } description={ home.fields.metadataDescription } />
+    
+    <body>
+		<Home content={ home } />
+    </body>
 </html>
-<style>
-  h1 {
-    color: orange;
-  }
-</style>

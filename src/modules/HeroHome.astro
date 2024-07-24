@@ -1,0 +1,12 @@
+---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
+const { content } = Astro.props;
+
+// console.log( {content} );
+---
+<header>
+    <h1>{ content.fields.headline }</h1>
+    <h2 set:html={ documentToHtmlString( content.fields.subheadRich ) }></h2>
+    <span>{ content.fields.detail }</span>
+</header>
