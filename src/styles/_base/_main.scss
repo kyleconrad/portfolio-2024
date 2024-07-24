@@ -1,0 +1,183 @@
+@use '../_variables/' as *;
+
+
+
+// Main
+
+//// CSS Variables
+:root {
+	// --scrollY: 0;
+	
+	// --scrollbar: 0;
+
+	// --fontsize: 1rem;
+	// --fontvw: 1vw;
+
+	// --spacing: 7vw;
+	// --spacingMin: 20px;
+	// --spacingMax: 200px;
+
+	// --navHeight: clamp( calc( var( --spacingMin ) + 40px ), calc( ( var( --spacing ) * 0.5 ) + 40px ), calc( var( --spacingMax ) + 40px ) );
+
+	// --transition: 0.15s;
+
+
+	// @each $color, $value in $colors {
+	// 	--#{ $color }: #{ $value };
+	// }
+}
+
+
+
+
+
+* {
+   	box-sizing: border-box;
+
+
+   	&:before,
+   	&:after {
+   		box-sizing: border-box;
+   	}
+}
+
+
+
+
+
+html {
+	min-height: 100%;
+	height: 100%;
+
+	-webkit-text-size-adjust: none;
+}
+
+body {
+	min-height: 100%;
+	width: 100%;
+	max-width: 100%;
+	
+	position: relative;
+	
+	overflow-x: hidden;
+
+	font-size: var( --fontsize );
+}
+
+main,
+nav,
+footer,
+header,
+article,
+section,
+div {
+	display: block;
+	position: relative;
+
+	// max-width: 100%;
+}
+
+
+
+
+
+//// Clearfix
+.clearfix::after {
+	clear: both;
+	display: table;
+	content: '';
+}
+
+
+
+
+
+//// Overflow
+.overflow--hidden {
+	overflow: hidden;
+}
+
+
+
+
+
+//// Display
+@each $size in $sizes {
+	@if $size == default {
+		.display--block {
+			display: block;
+		}
+
+		.display--flex {
+			display: flex;
+		}
+
+		.display--none {
+			display: none;
+		}
+	} @else {
+		@include breakpoint( #{ $size } ) {
+			.#{ $size }-display--block {
+				display: block;
+			}
+
+			.#{ $size }-display--flex {
+				display: flex;
+			}
+
+			.#{ $size }-display--none {
+				display: none;
+			}
+		}
+	}
+}
+
+
+
+
+
+//// Backgrounds, Fills, Borders
+@each $color, $value in $colors {
+	.bkg--#{$color} {
+		background-color: color( $color );
+	}
+
+	.fill--#{$color} {
+		fill: color( $color );
+	}
+
+	.border--#{$color} {
+		border-color: color( $color );
+	}
+}
+
+
+
+
+
+//// Opacity
+@for $i from 0 through 10 {
+	.opacity--#{ 10 * $i } {
+		opacity: ( 0.1 * $i );
+	}
+}
+
+@for $i from 1 through 3 {
+	.opacity--#{ 25 * $i } {
+		opacity: ( 0.25 * $i );
+	}
+}
+
+@include breakpoint( mobile ) {
+	@for $i from 0 through 10 {
+		.mobile-opacity--#{ 10 * $i } {
+			opacity: ( 0.1 * $i );
+		}
+	}
+	
+	@for $i from 1 through 3 {
+		.mobile-opacity--#{ 25 * $i } {
+			opacity: ( 0.25 * $i );
+		}
+	}	
+}

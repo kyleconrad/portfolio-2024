@@ -1,0 +1,18 @@
+@use '../_variables/' as *;
+
+
+
+// Images
+main img,
+main svg {
+    display: block;
+    position: relative;
+
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+    margin: 0;
+    padding: 0;
+}

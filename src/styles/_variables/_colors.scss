@@ -1,0 +1,54 @@
+// COLORS
+$colors: (
+	'ivory': (252, 250, 242),
+	'black': (47, 40, 40),
+
+	'red': (236, 28, 36),
+
+	'plum': (111, 8, 81),
+	'navy': (30, 42, 79),
+	'forest': (0, 63, 54),
+	'lavender': (181, 150, 248),
+	'peach': (250, 172, 139),
+	'sky': (123, 200, 248),
+	'gold': (247, 202, 81)
+);
+
+
+
+//  COLORS FUNCTION
+@function color( $key, $opacity: 1 ) {
+	// Errors
+	@if not global-variable-exists( colors ) {
+		@error '🔴  $colors map does not exist';
+	}
+
+	@if not length( $colors ) {
+		@error '🔴  $colors map does not contain any items';
+	}
+
+	// Get value and return CSS variable with opacity
+	$val: rgba( 0, 0, 0, $opacity );
+
+	@if length( $key ) == 1 {
+		$val: rgba( var( --#{ $key } ), $opacity );
+	}
+	@else {
+		@error '🔴  $colors map does not contain selected color';
+	}
+
+	@return $val;
+}
+
+/*
+EXAMPLE USAGE:
+Provides a handy shorthand method for getting colors so you don't have to map-get($colors, black) and deal with converting RGB and opacity values! Returns CSS variables based on colors map. Opacity is optional but defaults to 1.
+	
+div {
+	background-color: color( white );
+}
+
+a:hover {
+	color: color( blue, 0.5 );
+}
+*/
