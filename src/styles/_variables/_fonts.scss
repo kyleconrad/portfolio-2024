@@ -1,143 +1,91 @@
 // FONTS
 
-//// Sanomat
-// @font-face {
-//     font-family: 'Sanomat';
-//     src:    url( '../../fonts/Sanomat-Light-Web.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/Sanomat-Light-Web.woff' ) format( 'woff' ),
-//             url( '../../fonts/Sanomat-Light-Web.eot' ) format( 'eot' );
-//     font-weight: 300;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'Sanomat';
-//     src:    url( '../../fonts/Sanomat-LightItalic-Web.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/Sanomat-LightItalic-Web.woff' ) format( 'woff' ),
-//             url( '../../fonts/Sanomat-LightItalic-Web.eot' ) format( 'eot' );
-//     font-weight: 300;
-//     font-style: italic;
-// }
-
-// @font-face {
-//     font-family: 'Sanomat';
-//     src:    url( '../../fonts/Sanomat-Regular-Web.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/Sanomat-Regular-Web.woff' ) format( 'woff' ),
-//             url( '../../fonts/Sanomat-Regular-Web.eot' ) format( 'eot' );
-//     font-weight: 400;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'Sanomat';
-//     src:    url( '../../fonts/Sanomat-RegularItalic-Web.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/Sanomat-RegularItalic-Web.woff' ) format( 'woff' ),
-//             url( '../../fonts/Sanomat-RegularItalic-Web.eot' ) format( 'eot' );
-//     font-weight: 400;
-//     font-style: italic;
-// }
+//// Filler
+@font-face {
+    font-family: 'Filler';
+    src:    url( '/fonts/Filler-Variable.woff2' ) format( 'woff2 supports variations' ),
+            url( '/fonts/Filler-Variable.woff2' ) format( 'woff2-variations' ),
+            url( '/fonts/Filler-Variable.woff2' ) format( 'woff2' );
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
 
 
 
-// //// PP Right Grotesk Tight Bold
-// @font-face {
-//     font-family: 'PP Right Grotesk Tight Bold';
-//     src:    url( '../../fonts/PPRightGrotesk-TightBold.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGrotesk-TightBold.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGrotesk-TightBold.eot' ) format( 'eot' );
-//     font-weight: 700;
-//     font-style: normal;
-// }
+//// The Silver Editorial
+@font-face {
+    font-family: 'The Silver Editorial';
+    src:    url( '/fonts/TheSilverEditorial-Regular.woff2' ) format( 'woff2' ),
+            url( '/fonts/TheSilverEditorial-Regular.woff' ) format( 'woff' );
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: 'The Silver Editorial';
+    src:    url( '/fonts/TheSilverEditorial-Italic.woff2' ) format( 'woff2' ),
+            url( '/fonts/TheSilverEditorial-Italic.woff' ) format( 'woff' );
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
 
 
 
-// //// PP Right Grotesk Wide Medium
-// @font-face {
-//     font-family: 'PP Right Grotesk Wide Medium';
-//     src:    url( '../../fonts/PPRightGroteskText-WideMedium.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-WideMedium.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-WideMedium.eot' ) format( 'eot' );
-//     font-weight: 500;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'PP Right Grotesk Wide Medium';
-//     src:    url( '../../fonts/PPRightGroteskText-WideMediumItalic.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-WideMediumItalic.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-WideMediumItalic.eot' ) format( 'eot' );
-//     font-weight: 500;
-//     font-style: italic;
-// }
+//// Space Mono
+@font-face {
+    font-family: 'Space Mono';
+    src:    url( '/fonts/SpaceMono-Regular.woff2' ) format( 'woff2' ),
+            url( '/fonts/SpaceMono-Regular.woff' ) format( 'woff' );
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
 
 
 
-// //// PP Right Grotesk Text
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-Regular.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-Regular.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-Regular.eot' ) format( 'eot' );
-//     font-weight: 400;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-RegularItalic.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-RegularItalic.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-RegularItalic.eot' ) format( 'eot' );
-//     font-weight: 400;
-//     font-style: italic;
-// }
+//// Inter
+@font-face {
+    font-family: 'Inter';
+    src: url( '/fonts/Inter-Regular.woff2' ) format( 'woff2' );
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url( '/fonts/Inter-Italic.woff2' ) format( 'woff2' );
+    font-weight: 400;
+    font-style: italic;
+    font-display: block;
+}
 
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-Medium.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-Medium.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-Medium.eot' ) format( 'eot' );
-//     font-weight: 500;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-MediumItalic.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-MediumItalic.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-MediumItalic.eot' ) format( 'eot' );
-//     font-weight: 500;
-//     font-style: italic;
-// }
-
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-Bold.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-Bold.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-Bold.eot' ) format( 'eot' );
-//     font-weight: 700;
-//     font-style: normal;
-// }
-// @font-face {
-//     font-family: 'PP Right Grotesk Text';
-//     src:    url( '../../fonts/PPRightGroteskText-BoldItalic.woff2' ) format( 'woff2' ),
-//             url( '../../fonts/PPRightGroteskText-BoldItalic.woff' ) format( 'woff' ),
-//             url( '../../fonts/PPRightGroteskText-BoldItalic.eot' ) format( 'eot' );
-//     font-weight: 700;
-//     font-style: italic;
-// }
+@font-face {
+    font-family: 'Inter';
+    src: url( '/fonts/Inter-Bold.woff2' ) format( 'woff2' );
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url( '/fonts/Inter-BoldItalic.woff2' ) format( 'woff2' );
+    font-weight: 700;
+    font-style: italic;
+    font-display: block;
+}
 
 
 
 //// Font Variables
-// $font-primary: 'Sanomat', serif;
-// $font-primary--weight: 400;
-// $font-primary--light: 300;
+$font-headline: 'Filler', sans-serif;
+$font-secondary: 'The Silver Editorial', serif;
+$font-detail: 'Space Mono', monospace, monospace;
 
-// $font-tight: 'PP Right Grotesk Tight Bold', sans-serif;
-// $font-tight--weight: 700;
-
-// $font-wide: 'PP Right Grotesk Wide Medium', sans-serif;
-// $font-wide--weight: 500;
-
-// $font-copy: 'PP Right Grotesk Text', sans-serif;
-// $font-copy--weight: 400;
-// $font-copy--medium: 500;
-// $font-copy--bold: 700;
+$font-copy: 'Inter', sans-serif;
+$font-copy--weight: 400;
+$font-copy--bold: 700;
 
 
 

@@ -25,6 +25,17 @@
 
 
 
+h1 {
+    font-family: $font-headline;
+    font-variation-settings: 'wdth' 2.5;
+    font-size: 600px;
+    text-transform: uppercase;
+    leading-trim: both;
+    text-edge: cap alphabetic;
+}
+
+
+
 
 //// Alignment
 @each $alignment in $alignments {

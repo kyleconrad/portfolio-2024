@@ -7,6 +7,7 @@
 @forward 'layout'; // Layout related (containers, etc.)
 
 @forward 'media-query'; // Shortcut mixins for media queries
-@forward 'font-size'; // Shortcut mixings for font-sizing
+@forward 'font-size'; // Shortcut mixins for font sizing
+@forward 'text-crop'; // Shortcut mixins for text cropping
 @forward 'gradients'; // Shortcut mixins for gradients
-@forward 'nth-child'; // Shortcut mixings for nth-child selectors
+@forward 'nth-child'; // Shortcut mixins for nth-child selectors

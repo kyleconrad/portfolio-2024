@@ -17,28 +17,28 @@ $colors: (
 
 
 //  COLORS FUNCTION
-@function color( $key, $opacity: 1 ) {
-	// Errors
-	@if not global-variable-exists( colors ) {
-		@error '🔴  $colors map does not exist';
-	}
+// @function color( $key, $opacity: 1 ) {
+// 	// Errors
+// 	@if not global-variable-exists( colors ) {
+// 		@error '🔴  $colors map does not exist';
+// 	}
 
-	@if not length( $colors ) {
-		@error '🔴  $colors map does not contain any items';
-	}
+// 	@if not length( $colors ) {
+// 		@error '🔴  $colors map does not contain any items';
+// 	}
 
-	// Get value and return CSS variable with opacity
-	$val: rgba( 0, 0, 0, $opacity );
+// 	// Get value and return CSS variable with opacity
+// 	$val: rgba( 0, 0, 0, $opacity );
 
-	@if length( $key ) == 1 {
-		$val: rgba( var( --#{ $key } ), $opacity );
-	}
-	@else {
-		@error '🔴  $colors map does not contain selected color';
-	}
+// 	@if length( $key ) == 1 {
+// 		$val: rgba( var( --#{ $key } ), $opacity );
+// 	}
+// 	@else {
+// 		@error '🔴  $colors map does not contain selected color';
+// 	}
 
-	@return $val;
-}
+// 	@return $val;
+// }
 
 /*
 EXAMPLE USAGE:
