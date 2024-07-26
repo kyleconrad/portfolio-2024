@@ -1,0 +1,12 @@
+---
+import MediaImage from '../modules/MediaImage.astro';
+import MediaSingleColumn from '../modules/MediaSingleColumn.astro';
+import MediaDoubleColumn from '../modules/MediaDoubleColumn.astro';
+import MediaVideo from '../modules/MediaVideo.astro';
+
+const { content } = Astro.props;
+---
+{ ( content.__typename === 'Image' ) && <MediaImage content={ content } /> }
+{ ( content.__typename === 'SingleColumn' ) && <MediaSingleColumn content={ content } /> }
+{ ( content.__typename === 'DoubleColumn' ) && <MediaDoubleColumn content={ content } /> }
+{ ( content.__typename === 'Video' ) && <MediaVideo content={ content } /> }

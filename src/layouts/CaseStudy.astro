@@ -1,8 +1,24 @@
 ---
+import HeroCaseStudy from '../modules/HeroCaseStudy.astro';
+import Description from '../modules/Description.astro';
+import Media from '../modules/Media.astro';
+
 const { content } = Astro.props;
 
 // console.log( {content} );
 ---
 <article>
     { content.title }
+
+    <HeroCaseStudy content={ content.hero } />
+
+    <Description year={ content.year } detail={ content.detail } content={ content.description } />
+
+    <section>
+        {
+            content.mediaCollection.items.map( ( media ) => (
+                <Media content={ media } />
+            ))
+        }
+    </section>
 </article>
