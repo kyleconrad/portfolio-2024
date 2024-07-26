@@ -1,9 +1,291 @@
 import contentful from "contentful";
+import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+
+const $SPACE = import.meta.env.CONTENTFUL_SPACE_ID;
+const $TOKEN = import.meta.env.DEV ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN : import.meta.env.CONTENTFUL_DELIVERY_TOKEN;
 
 export const contentfulClient = contentful.createClient({
-	space: import.meta.env.CONTENTFUL_SPACE_ID,
-	accessToken: import.meta.env.DEV
-		? import.meta.env.CONTENTFUL_PREVIEW_TOKEN
-		: import.meta.env.CONTENTFUL_DELIVERY_TOKEN,
+	space: $SPACE,
+	accessToken: $TOKEN,
 	host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
 });
+
+
+
+// Overall API call to GraphQL Conentful API
+async function apiCall( query, variables ) {
+	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${$SPACE}/environments/master`;
+
+	const options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${$TOKEN}`,
+		},
+		body: JSON.stringify( { query, variables } ),
+	}
+
+	return await fetch( fetchUrl, options );
+}
+
+
+
+// Get homepage query
+async function getHome() {
+	const query = `
+		query {
+			contentfulHome: home(id:"3g2iyD1SfySxM8OnHB2d37") {
+				metadataTitle
+				metadataDescription
+				hero {
+					headline
+					subheadRich {
+						json
+					}
+					detail
+				}
+				caseStudiesCollection {
+					items {
+						slug
+						title
+						year
+						detail
+						hero {
+							headline
+							subheadRich {
+								json
+							}
+						}
+						description {
+							url
+							detail {
+								json
+							}
+							description {
+								json
+							}
+						}
+						mediaCollection {
+							items {
+								... on Image {
+									__typename
+									image {
+										url
+										width
+										height
+										description
+									}
+								}
+								... on SingleColumn {
+									__typename
+									caption {
+										json
+									}
+									alignment
+									imagesCollection {
+										items {
+											url
+											width
+											height
+											description
+										}
+									}
+								}
+								... on DoubleColumn {
+									__typename
+									caption {
+										json
+									}
+									alignment
+									leftColumnImagesCollection {
+										items {
+											url
+											width
+											height
+											description
+										}
+									}
+								}
+								... on Video {
+									__typename
+									videoWebM {
+										url
+									}
+									videoOgg {
+										url
+									}
+									videoMp4 {
+										url
+									}
+									videoPoster {
+										url
+									}
+								}
+							}
+						}
+					}
+				}
+				about {
+					headline {
+						json
+					}
+					detail
+					description {
+						json
+					}
+					colophon {
+						json
+					}
+					additional {
+						json
+					}
+					socialMediaCollection {
+						items {
+							name
+							url
+						}
+					}
+				}
+			}
+		}
+	`;
+
+	const response = await apiCall( query );
+	const json = await response.json();
+
+	return await json.data.contentfulHome;
+}
+
+
+
+// Get single case study
+async function getCaseStudy( id ) {
+	const variables = {
+		id: id
+	};
+
+	const query = `
+		query ($id: String!) {
+			contentfulCaseStudy: caseStudy(id: $id) {
+				title
+				slug
+				year
+				detail
+				metadataDescription
+				hero {
+					headline
+					subheadRich {
+						json
+					}
+				}
+				description {
+					url
+					detail {
+						json
+					}
+					description {
+						json
+					}
+				}
+				mediaCollection {
+					items {
+						... on Image {
+							__typename
+							image {
+								url
+								width
+								height
+								description
+							}
+						}
+						... on SingleColumn {
+							__typename
+							caption {
+								json
+							}
+							alignment
+							imagesCollection {
+								items {
+									url
+									width
+									height
+									description
+								}
+							}
+						}
+						... on DoubleColumn {
+							__typename
+							caption {
+								json
+							}
+							alignment
+							leftColumnImagesCollection {
+								items {
+									url
+									width
+									height
+									description
+								}
+							}
+						}
+						... on Video {
+							__typename
+							videoWebM {
+								url
+							}
+							videoOgg {
+								url
+							}
+							videoMp4 {
+								url
+							}
+							videoPoster {
+								url
+							}
+						}
+					}
+				}
+			}
+		}
+	`;
+
+	const response = await apiCall( query, variables );
+	const json = await response.json();
+
+	return await json.data.contentfulCaseStudy;
+}
+
+
+
+// Text options
+export function headlineOptions() {
+	return textOptions = {
+		renderMark: {
+			[MARKS.BOLD]: text => `<strong>${text}</strong>`,
+			[MARKS.ITALIC]: text => `<em>${text}</em>`,
+			[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+		},
+		renderNode: {
+			[BLOCKS.PARAGRAPH]: (node, next) => `${next(node.content)}`,
+		}
+	}
+}
+
+export function textOptions() {
+	return textOptions = {
+		renderMark: {
+			[MARKS.BOLD]: text => `<strong>${text}</strong>`,
+			[MARKS.ITALIC]: text => `<em>${text}</em>`,
+			[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+		},
+		renderNode: {
+			[BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
+			[INLINES.HYPERLINK]: (node, next) => `<a href=${node.data.uri} target="_blank" rel="noopener noreferrer">${next(node.content)}</a>`,
+		}
+	}
+}
+
+
+
+// Export functions
+export const contentfulGraphQLClient = { getHome, getCaseStudy };

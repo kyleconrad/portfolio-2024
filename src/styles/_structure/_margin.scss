@@ -1,0 +1,88 @@
+@use '../_variables' as *;
+
+
+
+// MARGINS
+@each $size in $sizes {
+    @if $size == default {
+        @for $i from 1 through 4 {
+            .margin--#{ 25 * $i } {
+                margin: calc( var( --spacing ) * #{ 0.25 * $i } ) 
+            }
+
+            @each $side in $sides {
+                .margin--#{ $side }--#{ 25 * $i } {
+                    margin-#{ $side }: calc( var( --spacing ) * #{ 0.25 * $i } )
+                }
+            }
+
+
+
+            @if ( $i > 1 ) {
+                .margin--#{ 100 * $i } {
+                    margin: calc( var( --spacing ) * #{ $i } )
+                }
+
+
+                @each $side in $sides {
+                    .margin--#{ $side }--#{ 100 * $i } {
+                        margin-#{ $side }: calc( var( --spacing ) * #{ $i } )
+                    }
+                }
+            }
+        }
+
+        @for $i from 0 through 4 {
+            .margin--#{ 5 * $i } {
+                margin: #{ 5px * $i };
+            }
+
+            @each $side in $sides {
+                .margin--#{ $side }--#{ 5 * $i } {
+                    margin-#{ $side }: #{ 5px * $i };
+                }
+            }
+        }
+    } @else {
+        @include breakpoint( #{ $size } ) {
+            @for $i from 1 through 4 {
+                .#{ $size }-margin--#{ 25 * $i } {
+                    margin: calc( var( --spacing ) * #{ 0.25 * $i } )
+                }
+    
+                @each $side in $sides {
+                    .#{ $size }-margin--#{ $side }--#{ 25 * $i } {
+                        margin-#{ $side }: calc( var( --spacing ) * #{ 0.25 * $i } )
+                    }
+                }
+
+
+
+                @if ( $i > 1 ) {
+                    .#{ $size }-margin--#{ 100 * $i } {
+                        margin: calc( var( --spacing ) * #{ $i } )
+                    }
+    
+    
+                    @each $side in $sides {
+                        .#{ $size }-margin--#{ $side }--#{ 100 * $i } {
+                            margin-#{ $side }: calc( var( --spacing ) * #{ $i } )
+                        }
+                    }
+                }
+            }
+    
+            @for $i from 0 through 4 {
+                .#{ $size }-margin--#{ 5 * $i } {
+                    margin: #{ 5px * $i };
+                }
+    
+                @each $side in $sides {
+                    .#{ $size }-margin--#{ $side }--#{ 5 * $i } {
+                        margin-#{ $side }: #{ 5px * $i };
+                    }
+                }
+            }
+        }
+    }
+}

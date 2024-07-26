@@ -1,5 +1,10 @@
 ---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { headlineOptions, textOptions } from "../lib/contentful";
+
+const { content } = Astro.props;
 ---
 <footer>
-    footer
+    <h2 set:html={ documentToHtmlString( content.headline.json, headlineOptions() ) }></h2>
 </footer>

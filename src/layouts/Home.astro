@@ -8,11 +8,13 @@ const { content } = Astro.props;
 // console.log( {content} );
 ---
 <main>
-    <HeroHome content={ content.fields.hero } />
+    <HeroHome content={ content.hero } />
 
-    { content.fields.caseStudies.map( ( caseStudy ) => (
-        <CaseStudy content={ caseStudy } />
-    )) }
+    {
+        content.caseStudiesCollection.items.map( ( caseStudy ) => (
+            <CaseStudy content={ caseStudy } />
+        ))
+    }
 
-    <Footer content={ content.fields.about } />
+    <Footer content={ content.about } />
 </main>

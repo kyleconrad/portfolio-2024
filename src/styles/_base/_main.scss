@@ -8,16 +8,12 @@
 :root {
 	// --scrollY: 0;
 	
-	// --scrollbar: 0;
+	--scrollbar: 0;
 
-	// --fontsize: 1rem;
-	// --fontvw: 1vw;
+	--fontsize: 1rem;
+	--fontvw: 1vw;
 
-	// --spacing: 7vw;
-	// --spacingMin: 20px;
-	// --spacingMax: 200px;
-
-	// --navHeight: clamp( calc( var( --spacingMin ) + 40px ), calc( ( var( --spacing ) * 0.5 ) + 40px ), calc( var( --spacingMax ) + 40px ) );
+	--spacing: clamp( 16px, 2.22vw, 64px );
 
 	// --transition: 0.15s;
 

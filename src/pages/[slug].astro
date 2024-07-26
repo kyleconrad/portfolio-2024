@@ -1,15 +1,13 @@
 ---
-import { contentfulClient } from "../lib/contentful";
+import { contentfulClient, contentfulGraphQLClient } from "../lib/contentful";
 
 import Head from '../components/Head.astro';
 import CaseStudy from '../layouts/CaseStudy.astro';
 import Footer from '../components/Footer.astro';
 
-const home = await contentfulClient.getEntry( '3g2iyD1SfySxM8OnHB2d37' );
-
 export async function getStaticPaths() {
     const entries = await contentfulClient.getEntries({
-        content_type: "caseStudy",
+        content_type: 'caseStudy',
     });
 
     const caseStudies = entries.items.map( ( caseStudy ) => ({
@@ -17,27 +15,35 @@ export async function getStaticPaths() {
             slug: caseStudy.fields.slug
         },
         props: {
-            title: caseStudy.fields.title,
-            metadataDescription: caseStudy.fields.metadataDescription,
-            content: caseStudy
+            id: caseStudy.sys.id
         },
     }));
 
     return caseStudies;
 }
 
-const { title, metadataDescription, content } = Astro.props;
+const { id } = Astro.props;
 
-const metadataTitle = title + ' | ' + home.fields.metadataTitle;
+const home = await contentfulGraphQLClient.getHome();
+const caseStudy = await contentfulGraphQLClient.getCaseStudy( id );
+
+const metadataTitle = caseStudy.title + ' | ' + home.metadataTitle;
+const metadataUrl = 'https://kyleconrad.com/' + caseStudy.slug + '/';
+
+console.log( caseStudy );
 ---
 <html lang="en">
-    <Head title={ metadataTitle } description={ metadataDescription } />
+    <Head
+        title={ metadataTitle }
+        description={ caseStudy.metadataDescription }
+        url={ metadataUrl }
+    />
 
     <body class="bkg--fill">
         <main>
-            <CaseStudy content={ content } />
+            <CaseStudy content={ caseStudy } />
 
-            <Footer content={ home.fields.about } />
+            <Footer content={ home.about } />
         </main>
     </body>
 </html>

@@ -1,0 +1,173 @@
+@use '../_variables' as *;
+
+
+// PADDING
+@each $size in $sizes {
+    @if $size == default {
+        @for $i from 0 through 4 {
+            .padding--#{ 25 * $i } {
+                @if $i == 0 {
+                    padding: $i;
+                } @else {
+                    padding: calc( var( --spacing ) * #{ 0.25 * $i } );
+                }
+            }
+
+
+            .padding--vertical--#{ 25 * $i } {
+                @if $i == 0 {
+                    padding-top: $i;
+                    padding-bottom: $i;
+                } @else {
+                    padding-top: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    padding-bottom: calc( var( --spacing ) * #{ 0.25 * $i } );
+                }
+            }
+
+            .padding--horizontal--#{ 25 * $i } {
+                @if $i == 0 {
+                    padding-left: $i;
+                    padding-right: $i;
+                } @else {
+                    padding-left: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    padding-right: calc( var( --spacing ) * #{ 0.25 * $i } );
+                }
+            }
+
+
+            @each $side in $sides {
+                @if $i == 0 {
+                    .padding--#{ $side }--#{ $i } {
+                        padding-#{ $side }: $i;
+                    }
+                } @else {
+                    .padding--#{ $side }--#{ 25 * $i } {
+                        padding-#{ $side }: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    }
+                }
+            }
+
+
+
+            @if ( $i > 1 ) {
+                .padding--#{ 100 * $i } {
+                    padding: calc( var( --spacing ) * #{ $i } );
+                }
+
+
+                .padding--vertical--#{ 100 * $i } {
+                    padding-top: calc( var( --spacing ) * #{ $i } );
+                    padding-bottom: calc( var( --spacing ) * #{ $i } );
+                }
+
+                .padding--horizontal--#{ 100 * $i } {
+                    padding-left: calc( var( --spacing ) * #{ $i } );
+                    padding-right: calc( var( --spacing ) * #{ $i } );
+                }
+
+
+                @each $side in $sides {
+                    .padding--#{ $side }--#{ 100 * $i } {
+                        padding-#{ $side }: calc( var( --spacing ) * #{ $i } );
+                    }
+                }
+            }
+        }
+
+        @for $i from 0 through 4 {
+            .padding--#{ 5 * $i } {
+                padding: #{ 5px * $i };
+            }
+
+            @each $side in $sides {
+                .padding--#{ $side }--#{ 5 * $i } {
+                    padding-#{ $side }: #{ 5px * $i };
+                }
+            }
+        }
+    } @else {
+        @include breakpoint( #{ $size }) {
+            @for $i from 0 through 4 {
+                .#{ $size }-padding--#{ 25 * $i } {
+                    @if $i == 0 {
+                        padding: $i;
+                    } @else {
+                        padding: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    }
+                }
+    
+    
+                .#{ $size }-padding--vertical--#{ 25 * $i } {
+                    @if $i == 0 {
+                        padding-top: $i;
+                        padding-bottom: $i;
+                    } @else {
+                        padding-top: calc( var( --spacing ) * #{ 0.25 * $i } );
+                        padding-bottom: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    }
+                }
+    
+                .#{ $size }-padding--horizontal--#{ 25 * $i } {
+                    @if $i == 0 {
+                        padding-left: $i;
+                        padding-right: $i;
+                    } @else {
+                        padding-left: calc( var( --spacing ) * #{ 0.25 * $i } );
+                        padding-right: calc( var( --spacing ) * #{ 0.25 * $i } );
+                    }
+                }
+    
+    
+                @each $side in $sides {
+                    @if $i == 0 {
+                        .#{ $size }-padding--#{ $side }--#{ $i } {
+                            padding-#{ $side }: $i;
+                        }
+                    } @else {
+                        .#{ $size }-padding--#{ $side }--#{ 25 * $i } {
+                            padding-#{ $side }: calc( var( --spacing ) * #{ 0.25 * $i } );
+                        }
+                    }
+                }
+    
+    
+    
+                @if ( $i > 1 ) {
+                    .#{ $size }-padding--#{ 100 * $i } {
+                        padding: calc( var( --spacing ) * #{ $i } );
+                    }
+    
+    
+                    .#{ $size }-padding--vertical--#{ 100 * $i } {
+                        padding-top: calc( var( --spacing ) * #{ $i } );
+                        padding-bottom: calc( var( --spacing ) * #{ $i } );
+                    }
+    
+                    .#{ $size }-padding--horizontal--#{ 100 * $i } {
+                        padding-left: calc( var( --spacing ) * #{ $i } );
+                        padding-right: calc( var( --spacing ) * #{ $i } );
+                    }
+    
+    
+                    @each $side in $sides {
+                        .#{ $size }-padding--#{ $side }--#{ 100 * $i } {
+                            padding-#{ $side }: calc( var( --spacing ) * #{ $i } );
+                        }
+                    }
+                }
+            }
+
+            @for $i from 0 through 4 {
+                .#{ $size }-padding--#{ 5 * $i } {
+                    padding: #{ 5px * $i };
+                }
+    
+                @each $side in $sides {
+                    .#{ $size }-padding--#{ $side }--#{ 5 * $i } {
+                        padding-#{ $side }: #{ 5px * $i };
+                    }
+                }
+            }
+        }
+    }
+}

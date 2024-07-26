@@ -1,15 +1,19 @@
 ---
-import { contentfulClient } from "../lib/contentful";
+import { contentfulGraphQLClient } from "../lib/contentful";
 
 import Head from '../components/Head.astro';
 import Home from '../layouts/Home.astro';
 
-const home = await contentfulClient.getEntry( '3g2iyD1SfySxM8OnHB2d37' );
+const home = await contentfulGraphQLClient.getHome();
 
 // console.log( home );
 ---
 <html lang="en">
-    <Head title={ home.fields.metadataTitle } description={ home.fields.metadataDescription } />
+    <Head
+		title={ home.metadataTitle }
+		description={ home.metadataDescription }
+		url="https://kyleconrad.com"
+	/>
     
     <body class="bkg--fill">
 		<Home content={ home } />
