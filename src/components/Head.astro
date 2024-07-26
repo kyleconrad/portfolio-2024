@@ -18,3 +18,31 @@ const { title, description, url } = Astro.props;
     <link rel="index" href="https://kyleconrad.com/">
     <link rel="author" href="/humans.txt" />
 </head>
+
+<script>
+    document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px');
+
+    widowControl( window.innerWidth );
+
+    window.addEventListener( 'resize', function() {
+        document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px');
+
+        widowControl( window.innerWidth );
+    });
+
+
+
+    function widowControl( width ) {
+        let 	widowElements = document.querySelectorAll( 'p' );
+
+        widowElements.forEach( function( element ) {
+            element.innerHTML = element.innerHTML.replace( /&nbsp;/g, ' ' );
+        });
+
+        if ( width > 700 ) {
+            widowElements.forEach( function( element ) {
+                element.innerHTML = element.innerHTML.replace( /\s((?=(([^\s<>]|<[^>]*>)+))\2)\s*$/, '&nbsp;$1' );
+            });
+        }
+    }
+</script>
