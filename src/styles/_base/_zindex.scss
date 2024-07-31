@@ -6,3 +6,18 @@
 		z-index: $i;
 	}
 }
+
+
+
+//// Navigation bar
+.nav__control {
+	z-index: 50;
+}
+
+
+
+//// Media module
+.media {
+	z-index: 75;
+	clip: rect(0, auto, auto, 0);
+}

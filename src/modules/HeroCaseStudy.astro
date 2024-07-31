@@ -1,4 +1,8 @@
 ---
+import Marquee from '../components/Marquee.astro';
+
 const { content } = Astro.props;
 ---
-case study hero
+<header class="hero default--flex default--flex--column default--flex--end">
+    <Marquee tag="h2" style="h2" content={ content } />
+</header>

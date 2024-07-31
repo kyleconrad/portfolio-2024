@@ -1,0 +1,17 @@
+---
+const { scroll, slug, title, year, detail, count } = Astro.props;
+
+const marginTop = ( count > 1 ) ? 'default--margin-top--25' : '';
+
+const link = ( scroll ) ? '#' + slug : '/' + slug;
+---
+<li class={ marginTop }>
+    <a href={ link } class="navigation-link default--flex--row default--flex--gap--25">
+        <span class="h5">{ title }</span>
+
+        <div class="default--flex--column default--flex--end default--flex--gap--compact text--text-small">
+            <span class="detail detail--small">{ year }</span>
+            <span class="detail detail--small">{ detail }</span>
+        </div>
+    </a>
+</li>

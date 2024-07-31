@@ -2,8 +2,9 @@
 import { contentfulClient, contentfulGraphQLClient } from "../lib/contentful";
 
 import Head from '../components/Head.astro';
+import NavigationBar from '../components/NavigationBar.astro';
 import CaseStudy from '../layouts/CaseStudy.astro';
-import Footer from '../components/Footer.astro';
+import Footer from '../modules/Footer.astro';
 
 export async function getStaticPaths() {
     const entries = await contentfulClient.getEntries({
@@ -30,7 +31,7 @@ const caseStudy = await contentfulGraphQLClient.getCaseStudy( id );
 const metadataTitle = caseStudy.title + ' | ' + home.metadataTitle;
 const metadataUrl = 'https://kyleconrad.com/' + caseStudy.slug + '/';
 
-// console.log( caseStudy );
+// console.log( home );
 ---
 <html lang="en">
     <Head
@@ -41,9 +42,11 @@ const metadataUrl = 'https://kyleconrad.com/' + caseStudy.slug + '/';
 
     <body class="bkg--fill">
         <main>
+            <NavigationBar color="default" text="true" headline={ home.hero.headline } subhead={ home.hero.detail } />
+
             <CaseStudy content={ caseStudy } />
 
-            <Footer content={ home.about } />
+            <Footer marquee={ home.hero.detail } content={ home.about } />
         </main>
     </body>
 </html>

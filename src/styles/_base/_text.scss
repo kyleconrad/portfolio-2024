@@ -14,8 +14,8 @@
 
     font-variant-ligatures: common-ligatures;
 
-    // -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .uppercase {
@@ -25,15 +25,349 @@
 
 
 
-h1 {
+
+//// Headlines
+.h1,
+.h2,
+.h5 {
+    $horizontal-adjustment: -0.005em;
+    $vertical-adjustment: 0.0065em;
+
+    display: block;
+
     font-family: $font-headline;
     font-stretch: 2.5;
     font-variation-settings: 'wdth' 2.5;
-    font-size: 600px;
     text-transform: uppercase;
-    // leading-trim: both;
-    // text-edge: cap alphabetic;
+
+    cursor: default;
+
+    white-space: nowrap;
+    margin-left: $horizontal-adjustment;
+    margin-right: $horizontal-adjustment;
+    margin-top: -#{ $vertical-adjustment };
+
+    padding-top: $vertical-adjustment;
+    // padding-bottom: $vertical-adjustment;
+
+    @include text-crop( $top-crop: -8, $bottom-crop: 3.5, $line-height: 1 );
+
+
+
+    .marquee & {
+        margin-top: 0;
+        
+        padding-bottom: $vertical-adjustment;
+    }
 }
+
+.h1 {
+    @include fontvwmath( 700, 898, 1800, 900, 0 );
+}
+
+.h2 {
+    @include fontvwmath( 400, 600, 800, 600, 0 );
+}
+
+.h5 {
+    @include fontvwmath( 60, 120, 180, 120, 0 );
+}
+
+.h3,
+.h4 {
+    font-family: $font-secondary;
+    font-weight: normal;
+
+    @include text-crop( $top-crop: -8, $bottom-crop: 3, $line-height: 1.25 );
+
+    em {
+        font-style: italic;
+    }
+}
+
+.h3 {
+    @include fontvwmath( 64, 80, 96, 100, 0 );
+}
+
+.h4 {
+    @include fontvwmath( 48, 64, 80, 80, 0 );
+}
+
+
+
+
+
+//// Headline textures
+.text--headline--large {
+    background:
+        url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+        url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 100%,
+        var( --text-large );
+    background-blend-mode:
+        multiply,
+        normal,
+        normal;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: blur( 0.25px );
+
+
+
+    &--top {
+        background:
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
+            var( --text-large );
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    &--bottom {
+        background:
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
+            var( --text-large );
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+}
+
+
+
+
+
+//// Copy
+p {
+    font-family: $font-copy;
+    font-weight: $font-copy--weight;
+}
+
+p strong,
+strong p {
+    font-weight: $font-copy--bold;
+}
+
+p em,
+em p {
+    font-style: italic;
+}
+
+.content p {
+    @include fontvwmath( 16, 16, 20, 26, -0.5 );
+
+    &:not(:last-child) {
+        margin-bottom: 1em;
+    }
+
+
+
+    a {
+        color: var( --text-small );
+
+        font-weight: $font-copy--bold;
+
+        text-decoration: none;
+
+
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+
+
+
+//// Sidebar detail
+.sidebar-content__detail p {
+    @include fontvwmath( 12, 14, 18, 18, -0.5 );
+
+    &:not(:last-child) {
+        margin-bottom: 0.25em;
+    }
+}
+
+.sidebar-content__detail .small {
+    display: block;
+
+    font-family: $font-copy;
+    font-weight: $font-copy--weight;
+
+    @include fontvwmath( 10, 12, 16, 16, -0.5 );
+
+    &:not(:last-child) {
+        margin-bottom: 0.5em;
+    }
+}
+
+.sidebar-content__detail a {
+    font-weight: $font-copy--medium;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+
+
+
+
+//// Detail
+.detail {
+    display: block;
+
+    font-family: $font-detail;
+    font-weight: normal;
+
+    @include fontvwmath( 16, 18, 24, 18, 0 );
+
+    text-transform: uppercase;
+
+    @include text-crop( $bottom-crop: 3, $line-height: 1 );
+
+
+
+    &--small {
+        @include fontvwmath( 10, 12, 18, 12, 0 );
+    }
+}
+
+a.detail,
+.detail a {
+    text-decoration: none;
+
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+
+
+
+
+//// Captions
+.caption {
+    font-family: $font-copy;
+    font-weight: $font-copy--weight;
+
+    @include fontvwmath( 14, 14, 18, 18, -0.5 );
+}
+
+
+
+
+//// Columns
+.columns {
+    columns: 2;
+    column-gap: var( --spacing );
+
+    p {
+        break-inside: avoid-column;
+    }
+}
+
+
+
+
+
+//// Navigation links
+.navigation-link {
+    cursor: pointer;
+
+
+
+    .h5 { 
+        background:
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 100%,
+            var( --text-large );
+        background-blend-mode:
+            multiply,
+            normal,
+            normal;
+
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0.25px );
+        
+        cursor: pointer;
+    }
+
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        .h5 {
+            -webkit-text-stroke: 1px var( --text-small );
+            text-stroke: 1px var( --text-small );
+
+            background: transparent;
+            color: transparent;
+        }
+    }
+}
+
+
+
+
+
+//// Button
+.button span {
+    background:
+        url( '/images/noise--25.png' ) repeat left top / 150px 150px,
+        url( '/images/bkg/bkg--fill.svg' ) no-repeat left top / 100% 100%,
+        var( --fill );
+    background-blend-mode:
+        lighten,
+        normal,
+        normal;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: blur( 0.25px );
+
+    cursor: pointer;
+}
+
+.button {
+    &:hover,
+    &:active,
+    &:focus {
+        span {
+            -webkit-text-stroke: 1px var( --fill );
+            text-stroke: 1px var( --fill );
+    
+            background: transparent;
+            color: transparent;
+        }
+    }    
+}
+
 
 
 

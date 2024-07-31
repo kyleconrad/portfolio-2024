@@ -1,0 +1,58 @@
+---
+import NavigationLink from '../components/NavigationLink.astro';
+
+const { content } = Astro.props;
+
+// console.log( content );
+
+const scroll = true;
+---
+<table-of-contents>
+    <nav class="sidebar-content sidebar-content--simple default--padding-horizontal--100">
+        <div class="sidebar-content__sidebar">
+            <div class="sticky default--padding-top--100">
+                <span class="detail text--text-small">Selected Work</span>
+            </div>
+        </div>
+    
+        <ul class="sidebar-content__content default--padding-top--100">
+            {
+                content.items.map( ( caseStudy, index ) => (
+                    <NavigationLink scroll={ scroll } slug={ caseStudy.slug } title={ caseStudy.title } year={ caseStudy.year } detail={ caseStudy.detail } count={ index + 1 } />
+                ))
+            }
+        </ul>
+    </nav>
+</table-of-contents>
+
+<script>
+    class TableOfContents extends HTMLElement {
+        constructor() {
+            super();
+
+            const   links = this.querySelectorAll<HTMLAnchorElement>( '.navigation-link' );
+
+            links.forEach( ( link ) => {
+                link.addEventListener( 'click', ( e ) => {
+                    console.log( link );
+
+                    const   target = document.querySelector<HTMLElement>( link.getAttribute( 'href' ) ),
+                            targetRect = target.getBoundingClientRect(),
+                            targetY = targetRect.top + window.scrollY;
+
+                    window.scrollTo({
+                        top: targetY,
+                        left: 0,
+                        behavior: 'instant',
+                    });
+
+                    link.blur();
+                    
+                    e.preventDefault();
+                });
+            });
+        }
+    }
+
+    customElements.define( 'table-of-contents', TableOfContents );
+</script>

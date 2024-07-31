@@ -4,7 +4,10 @@
 
 // MEDIA QUERIES
 @mixin breakpoint($point) {
-	@if $point == xxlarge {
+	@if $point == default {
+		@media only screen { @content; }
+	}
+	@else if $point == xxlarge {
 		@media only screen and (min-width : $xxLargeSize) { @content; }
 	}
 	@else if $point == large {

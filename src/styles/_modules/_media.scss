@@ -1,0 +1,13 @@
+// Media
+.media {
+    // contain: paint;
+    // display: flow-root;
+    overflow: clip;
+}
+
+.media__nav-track {
+    position: absolute;
+    top: calc( var( --nav ) * -3 );
+    bottom: calc( var( --nav ) * -3 );
+    right: var( --spacing );
+}

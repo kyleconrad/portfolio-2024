@@ -1,0 +1,178 @@
+@use '../_variables/' as *;
+
+
+
+// Video styles
+$controlHeight: 8px;
+$white: str-slice( #{ map-get( $colors, fill ) }, 2 );
+$purple: str-slice( #{ map-get( $colors, text-large ) }, 2 );
+
+
+
+.video__control {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: calc( var( --spacing ) * 0.25 );
+
+    transition: opacity 0.15s;
+
+    @media ( hover: hover ) and ( pointer: fine ) {
+		opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+	}
+}
+
+
+
+.video__control-container {
+    height: $controlHeight;
+}
+
+
+
+.video__control__progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: var( --progress );
+
+    background: var( --text-large );
+
+    pointer-events: none;
+}
+
+
+
+.video__control__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    cursor: pointer;
+
+
+
+    &::-webkit-slider-runnable-track {
+        height: $controlHeight;
+
+        background: rgb( from var( --copy ) r g b / 50% );
+    }
+
+    &::-moz-range-track {
+        height: $controlHeight;
+
+        background: rgb( from var( --copy ) r g b / 50% );
+    }
+
+
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+
+        height: 40px;
+        width: 40px;
+
+        margin-top: -20px;
+
+        background: transparent;
+
+        opacity: 0;
+    }
+
+    &::-moz-range-thumb {
+        appearance: none;
+        border: none;
+        border-radius: 0;
+
+        height: 40px;
+        width: 20px;
+
+        background: transparent;
+
+        opacity: 0;
+    }
+}
+
+
+
+.audio__control {
+    display: block;
+    width: calc( #{ $controlHeight } * 4 );
+
+    cursor: pointer;
+
+
+
+    &.mute {
+        .mute {
+            display: block;
+        }
+
+        .audible {
+            display: none;
+        }
+    }
+
+    &.audible {
+        .mute {
+            display: none;
+        }
+
+        .audible {
+            display: block;
+        }
+    }
+}
+
+
+
+@media ( hover: hover ) {
+    .video {
+        &.playing {
+            cursor:
+                url( 'data:image/svg+xml;utf8,<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><rect width="48" height="48" rx="24" fill="%23#{ $purple }"/><rect x="15" y="15" width="6" height="18" fill="%23#{ $white }"/><rect x="27" y="15" width="6" height="18" fill="%23#{ $white }"/></svg>' ) 32 32,
+                pointer;
+        }
+
+        &.paused {
+            cursor:
+                url( 'data:image/svg+xml;utf8,<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><rect width="48" height="48" rx="24" fill="%23#{ $purple }"/><path d="M33 24L19 33L19 15L33 24Z" fill="%23#{ $white }"/></svg>' ) 32 32,
+                pointer;
+
+        }
+    }
+}
+
+@media ( hover: none ) {
+    .video-container:has( video.paused ) {
+        &:after {
+            display: none;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            width: 60px;
+            height: 60px;
+
+            background: url( 'data:image/svg+xml;utf8,<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"><rect width="48" height="48" rx="24" fill="%23#{ $purple }"/><path d="M33 24L19 33L19 15L33 24Z" fill="%23#{ $white }"/></svg>' ) no-repeat center center / 100% 100%;
+
+            transform: translate( -50%, -50% );
+
+            z-index: 5;
+
+            content: '';
+        }
+    }
+}

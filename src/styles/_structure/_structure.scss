@@ -1,0 +1,178 @@
+// Repeated structural elements
+
+//// Sticky
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+
+
+
+
+//// Home hero
+.hero-home {
+    display: grid; 
+    grid-auto-flow: column; 
+    grid-template-columns: auto 1fr; 
+    grid-template-rows: auto auto; 
+    gap: var( --spacing ) var( --spacing ); 
+    grid-template-areas: 
+        "first content"
+        "last last";
+}
+
+.hero-home__first {
+    grid-area: first;
+}
+
+.hero-home__content {
+    grid-area: content;
+}
+
+.hero-home__last {
+    grid-area: last;
+}
+
+
+
+
+
+//// Sidebar content areas
+.sidebar-content {
+    display: grid; 
+    grid-auto-flow: column; 
+    grid-template-columns: var( --sidebar ) 1fr; 
+    grid-template-rows: 1fr auto; 
+    gap: var( --spacing ) var( --spacing ); 
+    grid-template-areas: 
+        "sidebar content"
+        "detail content";
+    
+    
+
+    &--simple {
+        grid-template-rows: auto; 
+        grid-template-areas: 
+            "sidebar content";
+    }
+}
+
+.sidebar-content__sidebar {
+    grid-area: sidebar;
+}
+
+.sidebar-content__detail {
+    grid-area: detail;
+}
+
+.sidebar-content__content {
+    grid-area: content;
+}
+
+
+
+
+
+//// Single column image
+.sidebar-image {
+    display: grid; 
+    grid-auto-flow: column;
+    grid-template-rows: auto;
+    gap: var( --spacing );
+
+
+
+    &--left {
+        grid-template-columns: calc( var( --sidebar ) + ( var( --spacing ) * 0.525 ) ) 1fr; 
+        grid-template-areas: 
+            "caption image";
+    }
+
+    &--right {
+        grid-template-columns: 1fr calc( var( --sidebar ) + ( var( --spacing ) * 0.525 ) );
+        grid-template-areas: 
+            "image caption";
+    }
+
+    &--full {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "image";
+    }
+}
+
+.sidebar-image__caption {
+    grid-area: caption;
+
+    align-self: start;
+
+    position: sticky;
+    top: 0;
+
+    padding: calc( var( --spacing ) - var( --spacingCompact ) ) 0;
+
+
+
+    .sidebar-image--left  & {
+        padding-left: calc( var( --spacing ) - var( --spacingCompact ) );
+    }
+
+    .sidebar-image--right & {
+        padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
+    }
+}
+
+.sidebar-image__image {
+    grid-area: image;
+}
+
+
+
+
+
+//// Double column image
+.columns-image {
+    display: grid; 
+    grid-auto-flow: column; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto auto; 
+    gap: var( --spacingCompact ) var( --spacingCompact );
+    grid-template-areas: 
+        "caption caption"
+        "columnLeft columnRight";
+
+    
+    
+    // &--left {
+    //     grid-template-areas: 
+    //         "caption caption"
+    //         "columnLeft columnRight";
+    // }
+
+    // &--right {
+    //     grid-template-areas: 
+    //         "columnLeft columnRight"
+    //         "caption caption";
+    // }
+
+    // &--full {
+    //     grid-template-rows: auto;
+    //     grid-template-areas: 
+    //         "columnLeft columnRight";
+    // }
+}
+
+.columns-image__caption {
+    grid-area: caption;
+
+    padding: calc( var( --spacing ) - var( --spacingCompact ) );
+}
+
+.columns-image__column--left {
+    grid-area: columnLeft;
+}
+
+.columns-image__column--right {
+    grid-area: columnRight;
+}

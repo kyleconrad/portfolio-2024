@@ -1,0 +1,126 @@
+---
+const { tag, style, content } = Astro.props;
+
+const Element = tag;
+---
+<marquee-container>
+    <div class="marquee-container default--flex--row overflow--hidden">
+        <div class="marquee default--flex--shrink--0 default--padding-horizontal--100">
+            <Element class:list={[ "text--headline--large", style ]} set:html={ content } />
+        </div>
+    </div>
+</marquee-container>
+
+<script>
+    class Marquee extends HTMLElement {
+        constructor() {
+            super();
+
+            const   container = this.querySelector<HTMLElement>( '.marquee-container' ),
+                    marquee = this.querySelector<HTMLElement>( '.marquee' );
+
+            let     bodyWidth = document.documentElement.clientWidth;
+
+            let     marqueeRect = marquee.getBoundingClientRect(),
+                    marqueeWidth = marqueeRect.width,
+                    // marqueeX = getTranslateXY( marquee ).translateX;
+                    marqueeX = 0;
+
+            let     difference = marqueeWidth - bodyWidth,
+                    differencePercent = ( difference / marqueeWidth ) * 100;
+
+            let     startMotion = false;
+            
+            let     mousePosX = 0;
+
+            
+            
+            //// Get mouse position & allow animation if in view
+            function mousePos( e ) {
+                mousePosX = e.pageX;
+                
+                if ( isElementInView( container ) && marqueeWidth > bodyWidth ) {
+                    startMotion = true;
+                }
+                else {
+                    startMotion = false;
+                }
+            }
+
+            window.addEventListener( 'mousemove', mousePos, false );
+            window.addEventListener( 'mouseover', mousePos, false );
+            window.addEventListener( 'mouseenter', mousePos, false );
+            window.addEventListener( 'mouseleave', mousePos, false );
+
+
+
+            //// Move animation
+            const marqueeTranslate = () => {
+                requestAnimationFrame( marqueeTranslate );
+
+
+
+                if ( startMotion ) {
+                    let     velocity = ( ( ( mousePosX / ( bodyWidth / 2 ) ) * 100 ) - 100 ) / 75;
+
+
+
+                    if ( marqueeX >= -100 && marqueeX <= 0 ) {
+                        // marquee.style.translate = ( ( marqueeX / 100 ) * difference ) + 'px 0';
+                        marquee.style.translate = ( ( marqueeX / 100 ) * differencePercent ) + '% 0';
+
+                        marqueeX += velocity;
+                    }
+
+                    if ( marqueeX < -100 ) marqueeX = -100;
+                    if ( marqueeX > 0 ) marqueeX = 0;
+                }
+            }
+
+            requestAnimationFrame( marqueeTranslate );
+
+
+
+            //// Change values if window resizes
+            window.addEventListener( 'resize', function() {
+                bodyWidth = document.documentElement.clientWidth;
+
+                marqueeRect = marquee.getBoundingClientRect(),
+                marqueeWidth = marqueeRect.width;
+
+                // marqueeX = getTranslateXY( marquee ).translateX;
+
+                difference = marqueeWidth - bodyWidth;
+            });
+
+
+
+            //// Determine if element is in view
+            function isElementInView( element ) {
+                let rect = element.getBoundingClientRect();
+
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= ( window.innerHeight * 1.15 || document.documentElement.clientHeight * 1.15 ) &&
+                    rect.right <= ( window.innerWidth || document.documentElement.clientWidth )
+                );
+            }
+
+
+
+            //// Get translate positions
+            function getTranslateXY( element ) {
+                const   style = window.getComputedStyle( element ),
+                        matrix = new DOMMatrixReadOnly( style.transform );
+
+                return {
+                    translateX: matrix.m41,
+                    translateY: matrix.m42
+                }
+            }
+        }
+    }
+
+    customElements.define( 'marquee-container', Marquee );
+</script>

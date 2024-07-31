@@ -1,0 +1,105 @@
+// Navigation button
+.nav__control {
+    display: block;
+
+    // width: clamp( 32px, 3vw, 64px );
+    height: var( --nav );
+    // aspect-ratio: 1 / 1;
+    width: auto;
+
+    cursor: pointer;
+
+
+
+    & > svg {
+        display: block;
+
+        height: 100%;
+        width: auto;
+    }
+
+
+
+    &.fixed {
+        position: fixed;
+        top: var( --spacing );
+        right: var( --spacing );
+    }
+
+    &.sticky {
+        position: sticky;
+        top: var( --spacing );
+    }
+
+
+
+    &.default {
+        & > svg {
+            stroke: var( --text-small );
+        }
+
+        .nav__control__hover {
+            border: 1px solid var( --text-small );
+
+            & > svg {
+                fill: var( --text-small );
+            }
+        }
+    }
+
+    &.light {
+        & > svg {
+            stroke: var( --fill );
+        }
+
+        .nav__control__hover {
+            border: 1px solid var( --fill );
+
+            & > svg {
+                fill: var( --fill );
+            }
+        }
+    }
+}
+
+.nav__control__hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    border-radius: 100%;
+
+    transform: translate( -50%, -50% );
+
+    opacity: 0;
+
+
+
+    & > svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 40%;
+        height: auto;
+
+        transform: translate( -50%, -50% );
+    }
+}
+
+.nav__control {
+    &:hover,
+    &:active,
+    &:focus {
+        & > svg {
+            opacity: 0;
+        }
+
+        .nav__control__hover {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+// Button
+
+.button {
+    background:
+        url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+        var( --text-large );
+    background-blend-mode:
+        multiply,
+        normal;
+
+    filter: blur( 0.25px );
+
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        background:
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            var( --text-small );
+        background-blend-mode:
+            multiply,
+            normal;
+    }
+}

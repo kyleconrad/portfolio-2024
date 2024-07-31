@@ -1,0 +1,16 @@
+---
+const { content } = Astro.props;
+
+const srcset = content.url + '?fm=webp&w=800 800w, ' + content.url + '?fm=webp&w=1200 1200w, ' + content.url + '?fm=webp ' + content.width + 'w'
+const sizes = '(max-width: 700px) 800px, (max-width: 1024px) 1200px, ' + content.width + 'px';
+---
+<img
+    srcset={ srcset }
+    sizes={ sizes }
+    src={ content.url }
+    width={ content.width }
+    height={ content.height }
+    alt={ content.description }
+    loading="lazy"
+    class="z--1"
+/>

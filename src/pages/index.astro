@@ -6,7 +6,7 @@ import Home from '../layouts/Home.astro';
 
 const home = await contentfulGraphQLClient.getHome();
 
-// console.log( home );
+// console.log( home.hero.detail );
 ---
 <html lang="en">
     <Head

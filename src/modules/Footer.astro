@@ -1,0 +1,33 @@
+---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { headlineOptions, copyOptions } from "../lib/contentful";
+
+import Marquee from '../components/Marquee.astro';
+import SocialLink from '../components/SocialLink.astro';
+
+const { marquee, content } = Astro.props;
+
+// console.log( content );
+---
+<footer class="footer default--padding-bottom--100 default--flex--column">
+    <div class="sidebar-content default--padding-horizontal--100">
+        <div class="sidebar-content__sidebar">
+            <ul class="sticky default--padding-top--100">
+                {
+                    content.socialMediaCollection.items.map( ( link, index ) => (
+                        <SocialLink content={ link } count={ index + 1 } />
+                    ))
+                }
+            </ul>
+        </div>
+
+        <div class="sidebar-content__detail text--text-small" set:html={ documentToHtmlString( content.colophon.json, copyOptions ) } />
+
+        <div class="sidebar-content__content default--flex--grow default--flex--column default--flex--gap default--padding-top--100">
+            <h4 class="h4 text--text-large" set:html={ documentToHtmlString( content.headline.json, headlineOptions ) }></h4>
+            <div class="content columns text--copy" set:html={ documentToHtmlString( content.description.json, copyOptions ) } />
+        </div>
+    </div>
+
+    <Marquee tag="span" style="h2" content={ marquee } />
+</footer>

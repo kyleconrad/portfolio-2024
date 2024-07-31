@@ -1,0 +1,8 @@
+---
+const { content, count } = Astro.props;
+
+const marginTop = ( count > 1 ) ? 'default--margin-top--50' : '';
+---
+<li class={ marginTop }>
+    <a href={ content.url } target="_blank" rel="noopener noreferrer" class="detail text--text-small">{ content.name }</a>
+</li>

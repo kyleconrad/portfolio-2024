@@ -1,14 +1,20 @@
 ---
+import NavigationBar from '../components/NavigationBar.astro';
 import HeroHome from '../modules/HeroHome.astro';
+import TableOfContents from '../modules/TableOfContents.astro';
 import CaseStudy from '../layouts/CaseStudy.astro';
-import Footer from '../components/Footer.astro';
+import Footer from '../modules/Footer.astro';
 
 const { content } = Astro.props;
 
-// console.log( {content} );
+// console.log( content.hero.detail );
 ---
 <main>
+    <NavigationBar color="default" text="false" />
+
     <HeroHome content={ content.hero } />
+
+    <TableOfContents content={ content.caseStudiesCollection } />
 
     {
         content.caseStudiesCollection.items.map( ( caseStudy ) => (
@@ -16,5 +22,5 @@ const { content } = Astro.props;
         ))
     }
 
-    <Footer content={ content.about } />
+    <Footer marquee={ content.hero.detail } content={ content.about } />
 </main>

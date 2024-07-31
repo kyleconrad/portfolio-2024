@@ -1,0 +1,16 @@
+---
+import NavigationButton from '../components/NavigationButton.astro';
+
+const { color, text, headline, subhead } = Astro.props;
+
+const showText = ( String( text ) === 'true' );
+const textColor = ( color === 'default' ) ? 'text--text-small' : 'text--fill';
+---
+{ ( showText ) && 
+    <header class:list={[ "sidebar-content sidebar-content--simple default--padding-horizontal--100 default--padding-top--100 z--1", textColor ]}>
+        <h1 class="detail sidebar-content__sidebar">{ headline }</h1>
+        <h3 class="detail sidebar-content__content">{ subhead }</h3>
+    </header>
+}
+
+<NavigationButton color={ color } position="fixed" />

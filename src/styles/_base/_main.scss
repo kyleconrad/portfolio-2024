@@ -14,6 +14,11 @@
 	--fontvw: 1vw;
 
 	--spacing: clamp( 16px, 2.22vw, 64px );
+	--spacingCompact: 4px;
+	--spacingLarge: clamp( 350px, 52.5svh, 700px );
+
+	--nav: clamp( 32px, 3vw, 64px );
+	--sidebar: 20%;
 
 	// --transition: 0.15s;
 
@@ -142,9 +147,24 @@ div {
 		fill: var( --#{ $color } );
 	}
 
+	.stroke--#{$color} {
+		stroke: var( --#{ $color } );
+	}
+
 	.border--#{$color} {
 		border-color: var( --#{ $color } );
 	}
+}
+
+.bkg--media {
+	background:
+		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
+		url( '/images/bkg/bkg--media.svg' ) no-repeat left top / 100% 100%,
+		var( --copy );
+	background-blend-mode:
+		lighten,
+		normal,
+		normal;
 }
 
 
@@ -152,28 +172,18 @@ div {
 
 
 //// Opacity
-@for $i from 0 through 10 {
-	.opacity--#{ 10 * $i } {
-		opacity: ( 0.1 * $i );
-	}
-}
+@each $size in $sizes {
+    @include breakpoint( #{ $size } ) {
+		@for $i from 0 through 10 {
+			.#{ $size }--opacity--#{ 10 * $i } {
+				opacity: ( 0.1 * $i );
+			}
+		}
 
-@for $i from 1 through 3 {
-	.opacity--#{ 25 * $i } {
-		opacity: ( 0.25 * $i );
-	}
-}
-
-@include breakpoint( mobile ) {
-	@for $i from 0 through 10 {
-		.mobile-opacity--#{ 10 * $i } {
-			opacity: ( 0.1 * $i );
+		@for $i from 1 through 3 {
+			.#{ $size }--opacity--#{ 25 * $i } {
+				opacity: ( 0.25 * $i );
+			}
 		}
 	}
-	
-	@for $i from 1 through 3 {
-		.mobile-opacity--#{ 25 * $i } {
-			opacity: ( 0.25 * $i );
-		}
-	}	
 }

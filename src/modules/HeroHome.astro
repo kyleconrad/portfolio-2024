@@ -1,14 +1,24 @@
 ---
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
-import { headlineOptions, textOptions } from "../lib/contentful";
+import { headlineOptions } from "../lib/contentful";
 
 const { content } = Astro.props;
 
 // console.log( {content} );
+const firstName = content.headline.split( ' ' )[ 0 ];
+const lastName = content.headline.split( ' ' )[ 1 ];
 ---
-<header>
-    <h1>{ content.headline }</h1>
-    <h2 set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions() ) }></h2>
-    <span>{ content.detail }</span>
+<header class="hero-home default--padding-top--100 default--padding-horizontal--100">
+    <div class="hero-home__first">
+        <h1 class="h1 text--headline--large text--headline--large--top">{ firstName }</h1>
+    </div>
+
+    <div class="hero-home__content default--flex--column default--flex--between">
+        <span class="detail text--text-small">{ content.detail }</span>
+        <h3 class="h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
+    </div>
+
+    <div class="hero-home__last">
+        <h1 class="h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
+    </div>
 </header>

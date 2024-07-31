@@ -4,223 +4,126 @@
 
 // FLEX CLASSES
 @each $size in $sizes {
-    @if $size == default {
-        .flex--row {
+    @include breakpoint( #{ $size } ) {
+        .#{ $size }--flex--row {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            gap: var( --spacing );
         }
         
-        .flex--column {
+        .#{ $size }--flex--column {
             display: flex;
             flex-direction: column;
             flex-wrap: nowrap;
+            gap: var( --spacing );
+        }
+
+        .#{ $size }--flex--gap--50 {
+            gap: calc( var( --spacing ) * 0.5 );
+        }
+        .#{ $size }--flex--gap--25 {
+            gap: calc( var( --spacing ) * 0.25 );
+        }
+        .#{ $size }--flex--gap--0 {
+            gap: 0;
+        }
+        .#{ $size }--flex--gap--compact {
+            gap: var( --spacingCompact );
         }
         
-        .flex--inline {
+        .#{ $size }--flex--inline {
             display: inline-flex;
         }
         
         
-        .flex--start {
+        .#{ $size }--flex--start {
             justify-content: flex-start;
         }
         
-        .flex--center {
+        .#{ $size }--flex--center {
             justify-content: center;
         }
         
-        .flex--between {
+        .#{ $size }--flex--between {
             justify-content: space-between;
         }
         
-        .flex--end {
+        .#{ $size }--flex--end {
             justify-content: flex-end;
         }
         
         
-        .flex--align-start {
+        .#{ $size }--flex--align-start {
             align-items: flex-start;
         }
         
-        .flex--align-center {
+        .#{ $size }--flex--align-center {
             align-items: center;
         }
         
-        .flex--align-stretch {
+        .#{ $size }--flex--align-stretch {
             align-items: stretch;
         }
         
-        .flex--align-end {
+        .#{ $size }--flex--align-end {
             align-items: flex-end;
         }
         
         
-        .flex--self-center {
-            align-self: center;
-        }
-        .flex--self-left {
+        .#{ $size }--flex--self-left {
             align-self: flex-start;
         }
-        .flex--self-right {
+        .#{ $size }--flex--self-right {
             align-self: flex-end;
         }
 
         
-        .flex--flex {
+        .#{ $size }--flex--flex {
             flex: 1 1 0;
         }
         
-        .flex--equal {
+        .#{ $size }--flex--equal {
             flex-basis: 0;
         }
 
-        .flex--equal--auto {
+        .#{ $size }--flex--equal--auto {
             flex-basis: auto;
         }
         
-        .flex--grow {
+        .#{ $size }--flex--grow {
             flex-grow: 1;
         }
-        .flex--grow--0 {
+        .#{ $size }--flex--grow--0 {
             flex-grow: 0;
         }
         
-        .flex--wrap {
+        .#{ $size }--flex--wrap {
             flex-wrap: wrap;
         }
-        .flex--nowrap {
+        .#{ $size }--flex--nowrap {
             flex-wrap: nowrap;
         }
         
-        .flex--shrink {
+        .#{ $size }--flex--shrink {
             flex-shrink: 1;
         }
         
-        .flex--shrink--0 {
+        .#{ $size }--flex--shrink--0 {
             flex-shrink: 0;
         }
         
         
         
         @for $i from 1 through 10 {
-            .flex--basis--#{ $i } {
-                flex-basis: calc( ( 100% / #{ $i } ) - 0px );
-                // flex-shrink: 0;
-            }
-        
-        
-            .order--#{ $i } {
-                order: $i;
-            }
-        }
-    } @else {
-        @include breakpoint( #{ $size } ) {
-            .#{ $size }-flex--row {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-            }
-            
-            .#{ $size }-flex--column {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: nowrap;
-            }
-            
-            .#{ $size }-flex--inline {
-                display: inline-flex;
-            }
-            
-            
-            .#{ $size }-flex--start {
-                justify-content: flex-start;
-            }
-            
-            .#{ $size }-flex--center {
-                justify-content: center;
-            }
-            
-            .#{ $size }-flex--between {
-                justify-content: space-between;
-            }
-            
-            .#{ $size }-flex--end {
-                justify-content: flex-end;
-            }
-            
-            
-            .#{ $size }-flex--align-start {
-                align-items: flex-start;
-            }
-            
-            .#{ $size }-flex--align-center {
-                align-items: center;
-            }
-            
-            .#{ $size }-flex--align-stretch {
-                align-items: stretch;
-            }
-            
-            .#{ $size }-flex--align-end {
-                align-items: flex-end;
-            }
-            
-            
-            .#{ $size }-flex--self-left {
-                align-self: flex-start;
-            }
-            .#{ $size }-flex--self-right {
-                align-self: flex-end;
-            }
-    
-            
-            .#{ $size }-flex--flex {
-                flex: 1 1 0;
-            }
-            
-            .#{ $size }-flex--equal {
-                flex-basis: 0;
-            }
-    
-            .#{ $size }-flex--equal--auto {
-                flex-basis: auto;
-            }
-            
-            .#{ $size }-flex--grow {
-                flex-grow: 1;
-            }
-            .#{ $size }-flex--grow--0 {
-                flex-grow: 0;
-            }
-            
-            .#{ $size }-flex--wrap {
-                flex-wrap: wrap;
-            }
-            .#{ $size }-flex--nowrap {
-                flex-wrap: nowrap;
-            }
-            
-            .#{ $size }-flex--shrink {
-                flex-shrink: 1;
-            }
-            
-            .#{ $size }-flex--shrink--0 {
+            .#{ $size }--flex--basis--#{ $i } {
+                flex-basis: calc( ( 100% / #{ $i } ) - 1px );
                 flex-shrink: 0;
             }
-            
-            
-            
-            @for $i from 1 through 10 {
-                .#{ $size }-flex--basis--#{ $i } {
-                    flex-basis: calc( ( 100% / #{ $i } ) - 1px );
-                    flex-shrink: 0;
-                }
-            
-            
-                .#{ $size }-order--#{ $i } {
-                    order: $i;
-                }
+        
+        
+            .#{ $size }--order--#{ $i } {
+                order: $i;
             }
         }
     }

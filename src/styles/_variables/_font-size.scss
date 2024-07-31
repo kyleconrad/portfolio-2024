@@ -1,18 +1,22 @@
+@use "sass:math";
+
+
+
 // FONT-SIZE RESPONSIVE FUNCTIONS
 @function font-size-math($base, $size, $unit) {
-	@return (($size / $base) * $unit);
+	@return (math.div($size, $base) * $unit);
 }
 @function font-vw-math($size) {
-	@return (($size / 1440) * 100vw);
+	@return (math.div($size, 1440) * 100vw);
 }
 @function font-vwraw-math($size) {
-	@return (($size / 1440) * 100);
+	@return (math.div($size, 1440) * 100);
 }
 @function line-height-math($size, $line-height) {
-	@return ($line-height / $size);
+	@return math.div($line-height, $size);
 }
 @function letter-spacing-math($size, $letter-spacing) {
-	@return (($letter-spacing / $size) * 1em);
+	@return (math.div($letter-spacing, $size) * 1em);
 }
 
 

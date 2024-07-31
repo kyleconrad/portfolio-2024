@@ -1,4 +1,33 @@
 ---
-const { year, detail, content } = Astro.props;
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { headlineOptions, copyOptions } from "../lib/contentful";
+
+import Button from '../components/Button.astro';
+
+const { subhead, year, detail, content } = Astro.props;
+
+// console.log( content );
 ---
-description
+<section class="default--padding-horizontal--100 default--padding-bottom--100">
+    <div class="sidebar-content">
+        <div class="sidebar-content__sidebar">
+            <div class="sticky default--padding-top--100 text--text-small">
+                <span class="detail">{ year }</span>
+                <span class="detail default--margin-top--25">{ detail }</span>
+            </div>
+        </div>
+
+        <div class="sidebar-content__detail text--text-small" set:html={ documentToHtmlString( content.detail.json, copyOptions ) } />
+
+        <div class="sidebar-content__content default--flex--grow default--flex--column default--flex--gap default--padding-top--100">
+            <h4 class="h4 text--text-large" set:html={ documentToHtmlString( subhead.json, headlineOptions ) } />
+            <div class="content columns text--copy" set:html={ documentToHtmlString( content.description.json, copyOptions ) } />
+        </div>
+    </div>
+
+    { ( content.url ) &&
+        <div class="default--padding-top--100">
+            <Button url="google.com" />
+        </div>
+    }
+</section>

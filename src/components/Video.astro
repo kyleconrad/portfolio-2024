@@ -1,0 +1,262 @@
+---
+// @ts-nocheck
+
+const { content } = Astro.props;
+
+// console.log( content );
+
+const poster = content.videoPoster.url + '?fm=webp&w=1200';
+
+const audio = ( String( content.audio ).toLowerCase() === 'true' );
+// const audio = content.audio.toLowerCase();
+const controlAlign = ( audio ) ? 'default--flex--align-center' : 'default--flex--align-end';
+---
+<video-container>
+    <div class="video-container z--1">
+        <div class:list={[ "video__control default--flex--row default--flex--gap--25 z--2", controlAlign ]} style="--progress: 0%;">
+            <div class="default--flex--grow">
+                <div class="video__control-container default--flex--grow">
+                    <div class="video__control__progress z--2" />
+                    <input type="range" value="0" min="0" max="100" step="0.01" class="video__control__input z--1" />
+                </div>
+            </div>
+
+            { ( audio ) && 
+                <button class="audio__control mute">
+                    <svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" class="mute">
+                        <path d="M11.5174 0C11.4179 0 11.327 0.0310528 11.2514 0.0834552L5.08532 3.6923C5.07001 3.70104 5.05374 3.70589 5.03651 3.70589H0.476671C0.351283 3.70589 0.230682 3.75635 0.141661 3.8466L0.140704 3.84757C0.0507295 3.93879 0 4.06203 0 4.19109V11.8077C0 11.9368 0.0507295 12.06 0.140704 12.1513C0.230678 12.2425 0.352236 12.2939 0.479536 12.2939H5.03668C5.05295 12.2939 5.07018 12.2988 5.08453 12.3075L11.2802 15.935C11.351 15.9757 11.4334 16 11.5214 16C11.7856 16 12 15.7817 12 15.5138V0.485214C12 0.220295 11.7913 0.00486226 11.531 1.80055e-05H11.5214H11.5195L11.5174 0Z" class="fill--text-large" />
+                        <path d="M16.7389 4C16.5502 4 16.3615 4.07133 16.2173 4.21547C15.9276 4.50525 15.9276 4.97335 16.2173 5.26312L18.9531 7.99889L16.2173 10.7361C15.9276 11.0259 15.9276 11.494 16.2173 11.7823C16.3615 11.9279 16.5502 11.9993 16.7404 11.9993C16.9291 11.9993 17.1179 11.9279 17.2635 11.7823L19.9993 9.04505L22.7365 11.7823C22.8821 11.9279 23.0709 11.9993 23.2596 11.9993C23.4498 11.9993 23.6385 11.9279 23.7827 11.7823C24.0724 11.494 24.0724 11.0259 23.7827 10.7361L21.0454 7.99889L23.7827 5.26164C24.0724 4.97335 24.0724 4.50524 23.7827 4.21696C23.6385 4.07133 23.4498 4 23.2596 4H23.2581C23.0694 4 22.8807 4.07282 22.7365 4.21547L19.9993 6.95273L17.262 4.21696C17.1179 4.07133 16.9291 4 16.7389 4Z" class="fill--text-large" />
+                    </svg>
+
+                    <svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" class="audible">
+                        <path d="M11.5174 0C11.4179 0 11.327 0.0310528 11.2514 0.0834552L5.08532 3.6923C5.07001 3.70104 5.05374 3.70589 5.03651 3.70589H0.476671C0.351283 3.70589 0.230682 3.75635 0.141661 3.8466L0.140704 3.84757C0.0507295 3.93879 0 4.06203 0 4.19109V11.8077C0 11.9368 0.0507295 12.06 0.140704 12.1513C0.230678 12.2425 0.352236 12.2939 0.479536 12.2939H5.03668C5.05295 12.2939 5.07018 12.2988 5.08453 12.3075L11.2802 15.935C11.351 15.9757 11.4334 16 11.5214 16C11.7856 16 12 15.7817 12 15.5138V0.485214C12 0.220295 11.7913 0.00486226 11.531 1.80055e-05H11.5214H11.5195L11.5174 0Z" class="fill--text-large" />
+                        <path d="M14.1847 11.5689C14.2432 11.6186 14.313 11.658 14.3898 11.6847C14.4666 11.7115 14.549 11.725 14.6321 11.7246C14.7146 11.7247 14.7964 11.711 14.8726 11.6842C14.9489 11.6575 15.0181 11.6183 15.0763 11.5689C16.1936 10.6227 16.8209 9.34163 16.8209 8.00615C16.8209 6.67066 16.1936 5.38958 15.0763 4.44337C14.9581 4.34363 14.7977 4.2876 14.6305 4.2876C14.4633 4.2876 14.3029 4.34363 14.1847 4.44337C14.0664 4.54311 14 4.67839 14 4.81944C14 4.9605 14.0664 5.09577 14.1847 5.19551C15.07 5.94235 15.5674 6.95526 15.5674 8.01142C15.5674 9.06759 15.07 10.0805 14.1847 10.8273C14.0691 10.9261 14.0043 11.0593 14.0043 11.1981C14.0043 11.3369 14.0691 11.4701 14.1847 11.5689Z" class="fill--text-large" />
+                        <path d="M16.7188 3.04732C17.4905 3.69757 18.1028 4.46976 18.5205 5.31973C18.9382 6.1697 19.1532 7.08079 19.1532 8.00089C19.1532 8.921 18.9382 9.83209 18.5205 10.6821C18.1028 11.532 17.4905 12.3042 16.7188 12.9545C16.6597 13.0036 16.6128 13.0621 16.5807 13.1267C16.5487 13.1913 16.5322 13.2605 16.5322 13.3305C16.5322 13.4005 16.5487 13.4698 16.5807 13.5344C16.6128 13.599 16.6597 13.6575 16.7188 13.7066C16.777 13.7565 16.8464 13.7961 16.923 13.8231C16.9995 13.8502 17.0817 13.8641 17.1646 13.8641C17.2476 13.8641 17.3298 13.8502 17.4063 13.8231C17.4828 13.7961 17.5522 13.7565 17.6105 13.7066C18.4993 12.9576 19.2044 12.0682 19.6855 11.0891C20.1666 10.1101 20.4142 9.06069 20.4142 8.00089C20.4142 6.9411 20.1666 5.89169 19.6855 4.91266C19.2044 3.93364 18.4993 3.04419 17.6105 2.29518C17.5519 2.24579 17.4824 2.20662 17.4059 2.17989C17.3294 2.15316 17.2474 2.1394 17.1646 2.1394C17.0819 2.1394 16.9999 2.15316 16.9234 2.17989C16.8469 2.20662 16.7774 2.24579 16.7188 2.29518C16.6603 2.34456 16.6138 2.40319 16.5822 2.46772C16.5505 2.53225 16.5342 2.60141 16.5342 2.67125C16.5342 2.74109 16.5505 2.81025 16.5822 2.87478C16.6138 2.9393 16.6603 2.99793 16.7188 3.04732Z" class="fill--text-large" />
+                        <path d="M19.253 0.157463C19.1939 0.206576 19.1469 0.265118 19.1149 0.329681C19.0828 0.394244 19.0663 0.463539 19.0663 0.533534C19.0663 0.603528 19.0828 0.672823 19.1149 0.737386C19.1469 0.801949 19.1939 0.860491 19.253 0.909604C21.4825 2.79032 22.7351 5.34111 22.7351 8.00084C22.7351 10.6606 21.4825 13.2114 19.253 15.0921C19.1347 15.1918 19.0683 15.3271 19.0683 15.4682C19.0683 15.6092 19.1347 15.7445 19.253 15.8442C19.3712 15.944 19.5316 16 19.6988 16C19.866 16 20.0264 15.944 20.1446 15.8442C21.3668 14.8148 22.3364 13.5921 22.9979 12.2463C23.6595 10.9004 24 9.45779 24 8.00084C24 6.5439 23.6595 5.10124 22.9979 3.7554C22.3364 2.40956 21.3668 1.18693 20.1446 0.157463C20.0864 0.107592 20.017 0.0679879 19.9405 0.0409549C19.8639 0.0139219 19.7818 0 19.6988 0C19.6158 0 19.5337 0.0139219 19.4571 0.0409549C19.3806 0.0679879 19.3112 0.107592 19.253 0.157463Z" class="fill--text-large" />
+                    </svg>
+                </button>
+            }
+        </div>
+
+        <video preload="metadata" playsinline muted disablePictureInPicture controlsList="nofullscreen nodownload" poster={ poster } src={ content.videoMp4.url } class="video z--1 paused">
+            <source src={ content.videoWebM.url } type="video/webm" />
+            <source src={ content.videoOgg.url } type="video/ogg" />
+            <source src={ content.videoMp4.url } type="video/mp4" />
+        </video>
+    </div>
+</video-container>
+
+<script>
+    class VideoContainer extends HTMLElement {
+        constructor() {
+            super();
+
+            let     videoState = {
+                        preload: 'metadata',
+                        progress: 0,
+                        mute: true,
+                        paused: true,
+                        manualPause: false,
+                        interaction: false
+                    }
+
+            const   video = this.querySelector<HTMLVideoElement>( 'video' ),
+                    videoControl = this.querySelector<HTMLElement>( '.video__control' ),
+                    videoProgress = this.querySelector<HTMLElement>( '.video__control__progress' ),
+                    videoInput = this.querySelector<HTMLInputElement>( '.video__control__input' );
+
+            const   audioControl = this.querySelector<HTMLButtonElement>( '.audio__control' );
+
+
+
+            //// Setting up all video functions
+            function preloadVideo() {
+                video.preload = 'auto';
+
+                videoState.preload = 'auto';
+            }
+
+            function playVideo() {
+                if ( videoState.interaction ) { 
+                    if ( video.currentTime === video.duration ) {
+                        video.currentTime = 0;
+                    }
+
+                    video.play();
+
+                    video.classList.remove( 'paused' );
+                    video.classList.add( 'playing' );
+
+                    videoState.paused = false;
+                }
+                else if ( !videoState.interaction && video.currentTime < video.duration ) {
+                    video.play();
+
+                    video.classList.remove( 'paused' );
+                    video.classList.add( 'playing' );
+
+                    videoState.paused = false;
+                }
+            }
+
+            function pauseVideo( manual ) {
+                video.pause();
+
+                video.classList.remove( 'playing' );
+                video.classList.add( 'paused' );
+
+                videoState.paused = true;
+
+                if ( manual ) {
+                    videoState.manualPause = true;
+                }
+            }
+
+            function toggleVideo() {
+                videoState.paused ? playVideo() : pauseVideo( true );
+
+                videoState.interaction = false;
+            }
+
+            function progressVideo( e ) {
+                if ( e.type == 'change' ) {
+                    let     currentTime = ( e.target.value / 100 ) * video.duration;
+
+                    video.currentTime = currentTime;
+
+                    videoState.progress = e.target.value;
+
+                    if ( currentTime < video.duration && !videoState.paused ) {
+                        playVideo();
+                    }
+
+                    e.preventDefault();
+                }
+                else if ( e.type == 'timeupdate' ) {
+                    let     currentProgress = ( video.currentTime / video.duration ) * 100;
+
+                    videoControl.style.setProperty( '--progress', currentProgress + '%' );
+
+                    videoState.progress = currentProgress;
+
+
+
+                    const animateProgress = () => {
+                        const   inputRect = videoInput.getBoundingClientRect();
+
+                        let     percentage = video.currentTime / video.duration;
+
+                        videoProgress.style.width = ( percentage * inputRect.width ) + 'px';
+
+                        requestAnimationFrame( animateProgress );
+                    }
+
+                    requestAnimationFrame( animateProgress );
+
+
+
+                    if ( video.currentTime == video.duration ) {
+                        video.classList.remove( 'playing' );
+                        video.classList.add( 'paused' );
+
+                        videoState.paused = true;
+                    }
+                }
+            }
+
+
+
+
+            //// Scroll preload & play/pause
+            window.addEventListener( 'scroll', ( e ) => {
+                let     windowHeight = window.innerHeight;
+
+                let     videoRect = video.getBoundingClientRect(),
+                        videoHeight = videoRect.height,
+                        videoY = videoRect.top + window.scrollY;
+                
+                let     preloadY = videoY - ( windowHeight * 3 ),
+                        playY = videoY - ( windowHeight * 0.95 ),
+                        pauseY = videoY + videoHeight;
+                
+                
+
+                ////// Preload video
+                if ( window.scrollY >= preloadY && videoState.preload != 'auto' ) {
+                    preloadVideo();
+                }
+
+                ////// Play or pause video when scrolled to
+                if ( window.scrollY >= pauseY && !videoState.paused || window.scrollY < playY && !videoState.paused ) {
+                    pauseVideo( false );
+                    
+                    if ( audioControl ) {
+                        muteAudio();
+                    }
+                }
+                else if ( window.scrollY < pauseY && window.scrollY >= playY && videoState.paused && !videoState.manualPause ) {
+                    playVideo();
+                }
+            });
+
+
+
+            //// Video input control
+            videoInput.addEventListener( 'change', ( e ) => {
+                progressVideo( e );
+            });
+
+
+
+            //// Video playing
+            video.addEventListener( 'timeupdate', ( e ) => {
+                progressVideo( e );
+            });
+
+
+
+            //// Video interaction
+            video.addEventListener( 'click', ( e ) => {
+                toggleVideo();
+
+                videoState.interaction = true;
+                
+                e.preventDefault();
+            });
+
+
+
+            //// Audio controls & interaction
+            function unmuteAudio() {
+                video.muted = false;
+                videoState.mute = false;
+
+                audioControl.classList.remove( 'mute' );
+                audioControl.classList.add( 'audible' );
+            }
+
+            function muteAudio() {
+                video.muted = true;
+                videoState.mute = true;
+
+                audioControl.classList.remove( 'audible' );
+                audioControl.classList.add( 'mute' );
+            }
+
+            function toggleAudio() {
+                videoState.mute ? unmuteAudio() : muteAudio();
+            }
+
+
+            if ( audioControl ) {
+                audioControl.addEventListener( 'click', ( e ) => {
+                    toggleAudio();
+                    
+                    e.preventDefault();
+                });
+            }
+        }
+    }
+
+    customElements.define( 'video-container', VideoContainer );
+</script>

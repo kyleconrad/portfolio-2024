@@ -4,6 +4,9 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 const $SPACE = import.meta.env.CONTENTFUL_SPACE_ID;
 const $TOKEN = import.meta.env.DEV ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN : import.meta.env.CONTENTFUL_DELIVERY_TOKEN;
 
+
+
+
 export const contentfulClient = contentful.createClient({
 	space: $SPACE,
 	accessToken: $TOKEN,
@@ -105,6 +108,14 @@ async function getHome() {
 											description
 										}
 									}
+									rightColumnImagesCollection {
+										items {
+											url
+											width
+											height
+											description
+										}
+									}
 								}
 								... on Video {
 									__typename
@@ -120,6 +131,7 @@ async function getHome() {
 									videoPoster {
 										url
 									}
+									audio
 								}
 							}
 						}
@@ -227,6 +239,14 @@ async function getCaseStudy( id ) {
 									description
 								}
 							}
+							rightColumnImagesCollection {
+								items {
+									url
+									width
+									height
+									description
+								}
+							}
 						}
 						... on Video {
 							__typename
@@ -242,6 +262,7 @@ async function getCaseStudy( id ) {
 							videoPoster {
 								url
 							}
+							audio
 						}
 					}
 				}
@@ -258,31 +279,29 @@ async function getCaseStudy( id ) {
 
 
 // Text options
-export function headlineOptions() {
-	return textOptions = {
-		renderMark: {
-			[MARKS.BOLD]: text => `<strong>${text}</strong>`,
-			[MARKS.ITALIC]: text => `<em>${text}</em>`,
-			[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
-		},
-		renderNode: {
-			[BLOCKS.PARAGRAPH]: (node, next) => `${next(node.content)}`,
-		}
-	}
+export const headlineOptions = {
+	renderMark: {
+		[MARKS.BOLD]: text => `<strong>${text}</strong>`,
+		[MARKS.ITALIC]: text => `<em>${text}</em>`,
+		[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+	},
+	renderNode: {
+		[BLOCKS.PARAGRAPH]: (node, next) => `${next(node.content)}`,
+	}	
 }
 
-export function textOptions() {
-	return textOptions = {
-		renderMark: {
-			[MARKS.BOLD]: text => `<strong>${text}</strong>`,
-			[MARKS.ITALIC]: text => `<em>${text}</em>`,
-			[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
-		},
-		renderNode: {
-			[BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
-			[INLINES.HYPERLINK]: (node, next) => `<a href=${node.data.uri} target="_blank" rel="noopener noreferrer">${next(node.content)}</a>`,
-		}
-	}
+export const copyOptions = {
+	renderMark: {
+		[MARKS.BOLD]: text => `<strong>${text}</strong>`,
+		[MARKS.ITALIC]: text => `<em>${text}</em>`,
+		[MARKS.UNDERLINE]: text => `<u>${text}</u>`,
+	},
+	renderNode: {
+		[BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
+		[BLOCKS.HEADING_6]: (node, next) => `<span class="small">${next(node.content)}</span>`,
+		[INLINES.HYPERLINK]: (node, next) => `<a href=${node.data.uri} target="_blank" rel="noopener noreferrer">${next(node.content)}</a>`,
+	},
+	preserveWhitespace: true
 }
 
 

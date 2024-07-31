@@ -1,4 +1,28 @@
 ---
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { headlineOptions } from "../lib/contentful";
+
+import Image from '../components/Image.astro';
+
 const { content } = Astro.props;
+
+// console.log( content, content.caption );
+
+const alignmentClass = ( !content.caption ) ? 'sidebar-image--full' : 'sidebar-image--' + content.alignment.toLowerCase();
 ---
-single column
+<div class:list={["sidebar-image z--1", alignmentClass]}>
+    {
+        ( content.caption ) &&
+        <div class="sidebar-image__caption">
+            <span class="caption text--fill" set:html={ documentToHtmlString( content.caption.json, headlineOptions ) } />
+        </div>
+    }
+
+    <div class="sidebar-image__image default--flex--column default--flex--gap--compact">
+        {
+            content.imagesCollection.items.map( ( image ) => (
+                <Image content={ image } />
+            ))
+        }
+    </div>
+</div>

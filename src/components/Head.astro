@@ -17,15 +17,20 @@ const { title, description, url } = Astro.props;
     <link rel="canonical" href={ url } />
     <link rel="index" href="https://kyleconrad.com/">
     <link rel="author" href="/humans.txt" />
+
+    <link rel="dns-prefetch" href="//images.ctfassets.net">
+    <link rel="dns-prefetch" href="//videos.ctfassets.net">
+    <link rel="preconnect" href="https://images.ctfassets.net">
+    <link rel="preconnect" href="https://videos.ctfassets.net">
 </head>
 
 <script>
-    document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px');
+    document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px' );
 
     widowControl( window.innerWidth );
 
     window.addEventListener( 'resize', function() {
-        document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px');
+        document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px' );
 
         widowControl( window.innerWidth );
     });
