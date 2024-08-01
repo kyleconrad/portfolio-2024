@@ -18,7 +18,7 @@ const { content } = Astro.props;
 
     {
         content.caseStudiesCollection.items.map( ( caseStudy ) => (
-            <CaseStudy content={ caseStudy } />
+            <CaseStudy tag="h2" content={ caseStudy } />
         ))
     }
 

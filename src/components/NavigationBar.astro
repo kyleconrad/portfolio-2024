@@ -8,8 +8,8 @@ const textColor = ( color === 'default' ) ? 'text--text-small' : 'text--fill';
 ---
 { ( showText ) && 
     <header class:list={[ "sidebar-content sidebar-content--simple default--padding-horizontal--100 default--padding-top--100 z--1", textColor ]}>
-        <h1 class="detail sidebar-content__sidebar">{ headline }</h1>
-        <h3 class="detail sidebar-content__content">{ subhead }</h3>
+        <a href="/" class="detail sidebar-content__sidebar">{ headline }</a>
+        <span class="detail sidebar-content__content">{ subhead }</span>
     </header>
 }
 

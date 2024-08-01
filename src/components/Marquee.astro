@@ -39,7 +39,7 @@ const Element = tag;
             function mousePos( e ) {
                 mousePosX = e.pageX;
                 
-                if ( isElementInView( container ) && marqueeWidth > bodyWidth ) {
+                if ( isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
                     startMotion = true;
                 }
                 else {
@@ -61,19 +61,30 @@ const Element = tag;
 
 
                 if ( startMotion ) {
-                    let     velocity = ( ( ( mousePosX / ( bodyWidth / 2 ) ) * 100 ) - 100 ) / 75;
+                    let     velocity = ( ( ( mousePosX / ( bodyWidth / 2 ) ) * 100 ) - 100 ) / 20;
 
 
 
-                    if ( marqueeX >= -100 && marqueeX <= 0 ) {
-                        // marquee.style.translate = ( ( marqueeX / 100 ) * difference ) + 'px 0';
-                        marquee.style.translate = ( ( marqueeX / 100 ) * differencePercent ) + '% 0';
+                    if ( marqueeX >= ( difference * -1 ) && marqueeX <= 0 ) {
+                        marquee.style.translate = ( ( marqueeX / marqueeWidth ) * 100 ) + '% 0';
 
                         marqueeX += velocity;
                     }
 
-                    if ( marqueeX < -100 ) marqueeX = -100;
+                    if ( marqueeX < ( difference * -1 ) ) marqueeX = ( difference * -1 );
                     if ( marqueeX > 0 ) marqueeX = 0;
+
+
+
+                //     if ( marqueeX >= -100 && marqueeX <= 0 ) {
+                //         // marquee.style.translate = ( ( marqueeX / 100 ) * difference ) + 'px 0';
+                //         marquee.style.translate = ( ( marqueeX / 100 ) * differencePercent ) + '% 0';
+
+                //         marqueeX += velocity;
+                //     }
+
+                //     if ( marqueeX < -100 ) marqueeX = -100;
+                //     if ( marqueeX > 0 ) marqueeX = 0;
                 }
             }
 
@@ -97,7 +108,7 @@ const Element = tag;
 
             //// Determine if element is in view
             function isElementInView( element ) {
-                let rect = element.getBoundingClientRect();
+                let     rect = element.getBoundingClientRect();
 
                 return (
                     rect.top >= 0 &&
@@ -105,6 +116,16 @@ const Element = tag;
                     rect.bottom <= ( window.innerHeight * 1.15 || document.documentElement.clientHeight * 1.15 ) &&
                     rect.right <= ( window.innerWidth || document.documentElement.clientWidth )
                 );
+            }
+
+
+
+            //// Check if element is visible
+            function isElementVisible( element ) {
+                return element.checkVisibility({
+                    checkOpacity: true,
+                    checkVisibilityCSS: true
+                });
             }
 
 

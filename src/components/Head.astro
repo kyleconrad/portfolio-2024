@@ -18,6 +18,11 @@ const { title, description, url } = Astro.props;
     <link rel="index" href="https://kyleconrad.com/">
     <link rel="author" href="/humans.txt" />
 
+    <link rel="icon" id="fav96" type="image/png" sizes="96x96" href="/icons/favicon96-light.png">
+    <link rel="icon" id="fav64" type="image/png" sizes="64x64" href="/icons/favicon64-light.png">
+    <link rel="icon" id="fav48" type="image/png" sizes="48x48" href="/icons/favicon48-light.png">
+    <link rel="icon" id="fav32" type="image/png" sizes="32x32" href="/icons/favicon32-light.png">
+
     <link rel="dns-prefetch" href="//images.ctfassets.net">
     <link rel="dns-prefetch" href="//videos.ctfassets.net">
     <link rel="preconnect" href="https://images.ctfassets.net">
@@ -25,9 +30,23 @@ const { title, description, url } = Astro.props;
 </head>
 
 <script>
+    const iconSizes = [ 96, 64, 48, 32 ];
+
+
+
     document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px' );
 
     widowControl( window.innerWidth );
+
+    if ( window.matchMedia && window.matchMedia( '(prefers-color-scheme: dark)' ).matches ) {
+        swapIcons( iconSizes, 'dark' );
+    }
+
+    window.matchMedia( '(prefers-color-scheme: dark)' ).addEventListener( 'change', e => {
+        const newColorScheme = e.matches ? 'dark' : 'light';
+
+        swapIcons( iconSizes, newColorScheme );
+    });
 
     window.addEventListener( 'resize', function() {
         document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px' );
@@ -49,5 +68,13 @@ const { title, description, url } = Astro.props;
                 element.innerHTML = element.innerHTML.replace( /\s((?=(([^\s<>]|<[^>]*>)+))\2)\s*$/, '&nbsp;$1' );
             });
         }
+    }
+
+    function swapIcons( sizes, color ) {
+        sizes.forEach( ( size ) => {
+            const link = document.querySelector<HTMLLinkElement>( '#fav' + size );
+
+            link.href = '/icons/favicon' + size + '-' + color + '.png';
+        });
     }
 </script>

@@ -4,12 +4,12 @@ import Description from '../modules/Description.astro';
 import NavigationButton from '../components/NavigationButton.astro';
 import Media from '../modules/Media.astro';
 
-const { content } = Astro.props;
+const { tag, content } = Astro.props;
 
 // console.log( content );
 ---
 <article id={ content.slug }>
-    <HeroCaseStudy content={ content.hero.headline } />
+    <HeroCaseStudy tag={ tag } content={ content.hero.headline } />
 
     <Description subhead={ content.hero.subheadRich } year={ content.year } detail={ content.detail } content={ content.description } />
 

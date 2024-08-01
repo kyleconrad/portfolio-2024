@@ -119,7 +119,24 @@
     }
 
     .sidebar-image--right & {
+        // top: calc( var( --spacing ) + var( --nav ) );
         padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
+        padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
+
+        // &:before {
+        //     float: right;
+
+        //     display: block;
+        //     width: var( --nav );
+        //     height: var( --nav );
+
+        //     margin-left: var( --spacing );
+        //     margin-bottom: var( --spacing );
+
+        //     // background: green;
+
+        //     content: '';
+        // }
     }
 }
 
@@ -167,6 +184,7 @@
     grid-area: caption;
 
     padding: calc( var( --spacing ) - var( --spacingCompact ) );
+    padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
 }
 
 .columns-image__column--left {
