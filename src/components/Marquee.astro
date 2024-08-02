@@ -3,8 +3,8 @@ const { tag, style, content } = Astro.props;
 
 const Element = tag;
 ---
-<marquee-container>
-    <div class="marquee-container default--flex--row overflow--hidden">
+<marquee-container class="marquee-scroll-wrapper">
+    <div class="marquee-container default--flex--row">
         <div class="marquee default--flex--shrink--0 default--padding-horizontal--100">
             <Element class:list={[ "text--headline--large", style ]} set:html={ content } />
         </div>
@@ -23,7 +23,6 @@ const Element = tag;
 
             let     marqueeRect = marquee.getBoundingClientRect(),
                     marqueeWidth = marqueeRect.width,
-                    // marqueeX = getTranslateXY( marquee ).translateX;
                     marqueeX = 0;
 
             let     difference = marqueeWidth - bodyWidth,
@@ -99,8 +98,6 @@ const Element = tag;
                 marqueeRect = marquee.getBoundingClientRect(),
                 marqueeWidth = marqueeRect.width;
 
-                // marqueeX = getTranslateXY( marquee ).translateX;
-
                 difference = marqueeWidth - bodyWidth;
             });
 
@@ -108,12 +105,13 @@ const Element = tag;
 
             //// Determine if element is in view
             function isElementInView( element ) {
-                let     rect = element.getBoundingClientRect();
+                let     rect = element.getBoundingClientRect(),
+                        multiplier = 0.15;
 
                 return (
-                    rect.top >= 0 &&
+                    rect.top >= ( window.innerHeight * multiplier * -1 || document.documentElement.clientHeight * multiplier * -1 ) &&
                     rect.left >= 0 &&
-                    rect.bottom <= ( window.innerHeight * 1.15 || document.documentElement.clientHeight * 1.15 ) &&
+                    rect.bottom <= ( window.innerHeight * ( 1 + multiplier ) || document.documentElement.clientHeight * ( 1 + multiplier ) ) &&
                     rect.right <= ( window.innerWidth || document.documentElement.clientWidth )
                 );
             }
@@ -131,15 +129,15 @@ const Element = tag;
 
 
             //// Get translate positions
-            function getTranslateXY( element ) {
-                const   style = window.getComputedStyle( element ),
-                        matrix = new DOMMatrixReadOnly( style.transform );
+            // function getTranslateXY( element ) {
+            //     const   style = window.getComputedStyle( element ),
+            //             matrix = new DOMMatrixReadOnly( style.transform );
 
-                return {
-                    translateX: matrix.m41,
-                    translateY: matrix.m42
-                }
-            }
+            //     return {
+            //         translateX: matrix.m41,
+            //         translateY: matrix.m42
+            //     }
+            // }
         }
     }
 

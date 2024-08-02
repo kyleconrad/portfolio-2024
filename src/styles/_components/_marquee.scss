@@ -1,0 +1,16 @@
+// Marquee
+
+@media ( hover: none ) {
+    .marquee-scroll-wrapper {
+        overflow-y: hidden;
+    }
+
+    .marquee-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: var( --scrollbar );
+
+        margin-bottom: calc( var( --scrollbar ) * -1 );
+    }
+}
