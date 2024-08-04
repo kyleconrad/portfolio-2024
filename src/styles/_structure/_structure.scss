@@ -15,9 +15,10 @@
     display: grid; 
     grid-auto-flow: column; 
     grid-template-columns: auto 1fr; 
-    grid-template-rows: auto auto; 
+    grid-template-rows: auto 1fr auto; 
     gap: var( --spacing ) var( --spacing ); 
     grid-template-areas: 
+        "first detail"
         "first content"
         "last last";
 }
@@ -26,8 +27,14 @@
     grid-area: first;
 }
 
+.hero-home__detail {
+    grid-area: detail;
+}
+
 .hero-home__content {
     grid-area: content;
+
+    align-self: end;
 }
 
 .hero-home__last {

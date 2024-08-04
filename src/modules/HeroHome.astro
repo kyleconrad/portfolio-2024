@@ -13,12 +13,9 @@ const lastName = content.headline.split( ' ' )[ 1 ];
         <h1 class="h1 text--headline--large text--headline--large--top">{ firstName }</h1>
     </div>
 
-    <div class="hero-home__content default--flex--column default--flex--between">
-        <span class="detail text--text-small">{ content.detail }</span>
-        <h3 class="h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
-    </div>
+    <span class="hero-home__detail detail text--text-small">{ content.detail }</span>
 
-    <div class="hero-home__last">
-        <h1 class="h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
-    </div>
+    <h3 class="hero-home__content h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
+
+    <h1 class="hero-home__last h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
 </header>
