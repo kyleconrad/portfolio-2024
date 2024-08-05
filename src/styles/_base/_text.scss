@@ -38,6 +38,9 @@
     font-family: $font-headline;
     font-stretch: 2.5;
     font-variation-settings: 'wdth' 2.5;
+
+    line-height: 1;
+
     text-transform: uppercase;
 
     cursor: default;
@@ -62,21 +65,23 @@
 }
 
 .h1 {
-    @include fontvwmath( 700, 898, 1800, 900, 0 );
+    @include fontvwclamp( 700, 896, 1800 );
 }
 
 .h2 {
-    @include fontvwmath( 400, 600, 800, 600, 0 );
+    @include fontvwclamp( 400, 600, 800 );
 }
 
 .h5 {
-    @include fontvwmath( 60, 120, 180, 120, 0 );
+    @include fontvwclamp( 60, 120, 180 );
 }
 
 .h3,
 .h4 {
     font-family: $font-secondary;
     font-weight: normal;
+
+    line-height: 1.25;
 
     @include text-crop( $top-crop: -8, $bottom-crop: 3, $line-height: 1.25 );
 
@@ -86,11 +91,11 @@
 }
 
 .h3 {
-    @include fontvwmath( 64, 80, 96, 100, 0 );
+    @include fontvwclamp( 64, 80, 96 );
 }
 
 .h4 {
-    @include fontvwmath( 48, 64, 80, 80, 0 );
+    @include fontvwclamp( 48, 64, 80 );
 }
 
 
@@ -162,6 +167,8 @@ em p {
 
 .content p {
     @include fontvwmath( 16, 16, 20, 26, -0.5 );
+
+
 
     &:not(:last-child) {
         margin-bottom: 1em;

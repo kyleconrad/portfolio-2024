@@ -26,6 +26,10 @@
 	letter-spacing: letter-spacing-math($size, $letter-spacing);
 }
 
+@mixin fontvwclamp($min, $size, $max) {
+	font-size: clamp(( $min * 1px ), font-vw-math($size), ( $max * 1px ));
+}
+
 @mixin fontvwmath($min, $size, $max, $line-height, $letter-spacing) {
 	font-size: clamp(( $min * 1px ), font-vw-math($size), ( $max * 1px ));
 	line-height: line-height-math($size, $line-height);
