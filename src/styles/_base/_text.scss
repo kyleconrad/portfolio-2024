@@ -65,7 +65,7 @@
 }
 
 .h1 {
-    @include fontvwclamp( 700, 896, 1800 );
+    @include fontvwclamp( 700, 896, 2000 );
 }
 
 .h2 {
@@ -78,24 +78,31 @@
 
 .h3,
 .h4 {
+    $horizontal-adjustment: -0.025em;
+
     font-family: $font-secondary;
-    font-weight: normal;
+    font-weight: $font-secondary--weight;
 
-    line-height: 1.25;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
 
-    @include text-crop( $top-crop: -8, $bottom-crop: 3, $line-height: 1.25 );
+    margin-left: $horizontal-adjustment;
 
-    em {
-        font-style: italic;
+    @include text-crop( $top-crop: 10, $bottom-crop: 3, $line-height: 0.9 );
+
+
+    
+    strong {
+        font-weight: $font-secondary--bold;
     }
 }
 
 .h3 {
-    @include fontvwclamp( 64, 80, 96 );
+    @include fontvwclamp( 80, 120, 280 );
 }
 
 .h4 {
-    @include fontvwclamp( 48, 64, 80 );
+    @include fontvwclamp( 72, 104, 120 );
 }
 
 
@@ -240,7 +247,9 @@ em p {
     font-family: $font-detail;
     font-weight: normal;
 
-    @include fontvwmath( 16, 18, 24, 18, 0 );
+    @include fontvwclamp( 16, 18, 24 );
+
+    line-height: 1;
 
     text-transform: uppercase;
 
@@ -249,7 +258,7 @@ em p {
 
 
     &--small {
-        @include fontvwmath( 10, 12, 18, 12, 0 );
+        @include fontvwclamp( 10, 12, 18 );
     }
 }
 
@@ -285,6 +294,8 @@ a.detail,
 .columns {
     columns: 2;
     column-gap: var( --spacing );
+
+
 
     p {
         break-inside: avoid-column;

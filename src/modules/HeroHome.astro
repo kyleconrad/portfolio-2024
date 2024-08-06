@@ -17,5 +17,7 @@ const lastName = content.headline.split( ' ' )[ 1 ];
 
     <h3 class="hero-home__content h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
 
-    <h1 class="hero-home__last h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
+    <div class="hero-home__last">
+        <h1 class="h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
+    </div>
 </header>
