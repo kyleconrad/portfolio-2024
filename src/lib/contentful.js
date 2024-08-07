@@ -40,6 +40,9 @@ async function getHome() {
 			contentfulHome: home(id:"3g2iyD1SfySxM8OnHB2d37") {
 				metadataTitle
 				metadataDescription
+				metadataImage {
+					url
+				}
 				hero {
 					headline
 					subheadRich {
@@ -217,6 +220,9 @@ async function getCaseStudy( id ) {
 				year
 				detail
 				metadataDescription
+				metadataImage {
+					url
+				}
 				hero {
 					headline
 					subheadRich {

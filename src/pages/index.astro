@@ -11,6 +11,7 @@ const home = await contentfulGraphQLClient.getHome();
     <Head
 		title={ home.metadataTitle }
 		description={ home.metadataDescription }
+		image={ home.metadataImage.url }
 		url="https://kyleconrad.com"
 	/>
     
