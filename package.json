@@ -27,6 +27,7 @@
     "@contentful/rich-text-html-renderer": "^16.6.6",
     "@playform/compress": "^0.1.1",
     "astro": "^4.12.2",
+    "astro-compressor": "^0.4.1",
     "contentful": "^10.12.14",
     "sass": "^1.77.8"
   },
