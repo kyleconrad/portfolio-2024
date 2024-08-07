@@ -5,8 +5,6 @@ import NavigationButton from '../components/NavigationButton.astro';
 import Media from '../modules/Media.astro';
 
 const { tag, content } = Astro.props;
-
-// console.log( content );
 ---
 <article id={ content.slug }>
     <HeroCaseStudy tag={ tag } content={ content.hero.headline } />
@@ -15,7 +13,7 @@ const { tag, content } = Astro.props;
 
     <section class="media default--flex--column default--flex--gap--compact default--padding--compact bkg--media">
         <div class="media__nav-track z--5">
-            <NavigationButton color="light" position="sticky" />
+            <NavigationButton state="open" color="light" position="sticky" />
         </div>
 
         {

@@ -63,6 +63,12 @@ body {
 	overflow-x: hidden;
 
 	font-size: var( --fontsize );
+
+
+
+	&.nav--open {
+		overflow: hidden;
+	}
 }
 
 main,
@@ -76,6 +82,12 @@ div {
 	position: relative;
 
 	// max-width: 100%;
+}
+
+main {
+	.nav--open & {
+		padding-right: var( --scrollbar );
+	}
 }
 
 
@@ -160,6 +172,18 @@ div {
 	background:
 		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
 		url( '/images/bkg/bkg--media.svg' ) no-repeat left top / 100% 100%,
+		var( --copy );
+	background-blend-mode:
+		lighten,
+		normal,
+		normal;
+}
+
+
+.bkg--navigation {
+	background:
+		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
+		url( '/images/bkg/bkg--navigation.svg' ) no-repeat left top / 100% 100%,
 		var( --copy );
 	background-blend-mode:
 		lighten,

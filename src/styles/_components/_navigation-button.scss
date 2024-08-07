@@ -24,6 +24,11 @@
         position: fixed;
         top: var( --spacing );
         right: var( --spacing );
+
+
+        .navigation & {
+            right: calc( var( --spacing ) + var( --scrollbar ) );
+        }
     }
 
     &.sticky {
@@ -38,7 +43,8 @@
             stroke: var( --text-small );
         }
 
-        .nav__control__hover {
+        .nav__control__hover,
+        .nav__control__close {
             border: 1px solid var( --text-small );
 
             & > svg {
@@ -52,7 +58,8 @@
             stroke: var( --fill );
         }
 
-        .nav__control__hover {
+        .nav__control__hover,
+        .nav__control__close {
             border: 1px solid var( --fill );
 
             & > svg {
@@ -62,7 +69,8 @@
     }
 }
 
-.nav__control__hover {
+.nav__control__hover,
+.nav__control__close {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -91,15 +99,53 @@
 }
 
 .nav__control {
-    &:hover,
-    &:active,
-    &:focus {
+    &.open {
         & > svg {
+            opacity: 1;
+        }
+
+        .nav__control__hover,
+        .nav__control__close {
+            opacity: 0;
+        }
+    }
+
+    &.close {
+        & > svg,
+        .nav__control__hover {
             opacity: 0;
         }
 
-        .nav__control__hover {
+        .nav__control__close {
             opacity: 1;
+        }
+    }
+}
+
+.nav__control {
+    &.open {
+        &:hover,
+        &:focus {
+            & > svg {
+                opacity: 0;
+            }
+
+            .nav__control__hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.close {
+        &:hover,
+        &:focus {
+            .nav__control__close {
+                background: var( --fill );
+
+                & > svg {
+                    fill: var( --copy );
+                }
+            }
         }
     }
 }

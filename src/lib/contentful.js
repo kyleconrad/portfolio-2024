@@ -170,6 +170,39 @@ async function getHome() {
 
 
 
+// Get homepage query
+async function getNavigation() {
+	const query = `
+		query {
+			contentfulNavigation: navigation(id:"4t4MhDRfvC5pzhnlcm3y0P") {
+				title
+				detail
+				linksCollection {
+					items {
+						title
+						slug
+						year
+						detail
+					}
+				}
+				socialMediaCollection {
+					items {
+						name
+						url
+					}
+				}
+			}
+		}
+	`;
+
+	const response = await apiCall( query );
+	const json = await response.json();
+
+	return await json.data.contentfulNavigation;
+}
+
+
+
 // Get single case study
 async function getCaseStudy( id ) {
 	const variables = {
@@ -307,4 +340,4 @@ export const copyOptions = {
 
 
 // Export functions
-export const contentfulGraphQLClient = { getHome, getCaseStudy };
+export const contentfulGraphQLClient = { getHome, getNavigation, getCaseStudy };

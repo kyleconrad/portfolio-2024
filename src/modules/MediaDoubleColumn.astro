@@ -6,8 +6,6 @@ import Image from '../components/Image.astro';
 
 const { content } = Astro.props;
 
-// console.log( content );
-
 const alignmentClass = ( !content.caption ) ? 'columns-image--full' : 'columns-image--' + content.alignment.toLowerCase();
 ---
 <div class:list={["columns-image z--1", alignmentClass]}>

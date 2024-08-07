@@ -2,10 +2,6 @@
 import NavigationLink from '../components/NavigationLink.astro';
 
 const { content } = Astro.props;
-
-// console.log( content );
-
-const scroll = true;
 ---
 <table-of-contents>
     <nav class="sidebar-content sidebar-content--simple default--padding-horizontal--100">
@@ -18,7 +14,7 @@ const scroll = true;
         <ul class="sidebar-content__content default--padding-top--100">
             {
                 content.items.map( ( caseStudy, index ) => (
-                    <NavigationLink scroll={ scroll } slug={ caseStudy.slug } title={ caseStudy.title } year={ caseStudy.year } detail={ caseStudy.detail } count={ index + 1 } />
+                    <NavigationLink dark="false" scroll="true" slug={ caseStudy.slug } title={ caseStudy.title } year={ caseStudy.year } detail={ caseStudy.detail } count={ index + 1 } />
                 ))
             }
         </ul>

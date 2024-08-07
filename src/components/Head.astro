@@ -42,13 +42,13 @@ const { title, description, url } = Astro.props;
         swapIcons( iconSizes, 'dark' );
     }
 
-    window.matchMedia( '(prefers-color-scheme: dark)' ).addEventListener( 'change', e => {
+    window.matchMedia( '(prefers-color-scheme: dark)' ).addEventListener( 'change', ( e ) => {
         const newColorScheme = e.matches ? 'dark' : 'light';
 
         swapIcons( iconSizes, newColorScheme );
     });
 
-    window.addEventListener( 'resize', function() {
+    window.addEventListener( 'resize', ( e ) => {
         document.documentElement.style.setProperty( '--scrollbar', ( window.innerWidth - document.documentElement.clientWidth ) + 'px' );
 
         widowControl( window.innerWidth );
@@ -57,7 +57,7 @@ const { title, description, url } = Astro.props;
 
 
     function widowControl( width ) {
-        let 	widowElements = document.querySelectorAll( 'p' );
+        let 	widowElements = document.querySelectorAll<HTMLParagraphElement>( 'p' );
 
         widowElements.forEach( function( element ) {
             element.innerHTML = element.innerHTML.replace( /&nbsp;/g, ' ' );

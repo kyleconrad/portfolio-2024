@@ -2,9 +2,10 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { headlineOptions } from "../lib/contentful";
 
+import Marquee from '../components/Marquee.astro';
+
 const { content } = Astro.props;
 
-// console.log( {content} );
 const firstName = content.headline.split( ' ' )[ 0 ];
 const lastName = content.headline.split( ' ' )[ 1 ];
 ---

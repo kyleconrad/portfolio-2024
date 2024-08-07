@@ -1,0 +1,41 @@
+---
+import { contentfulGraphQLClient } from "../lib/contentful";
+
+import NavigationButton from '../components/NavigationButton.astro';
+import Marquee from '../components/Marquee.astro';
+import NavigationLink from '../components/NavigationLink.astro';
+import SocialLink from '../components/SocialLink.astro';
+
+const navigation = await contentfulGraphQLClient.getNavigation();
+---
+<nav class="navigation bkg--navigation">
+    <NavigationButton state="close" color="light" position="fixed" />
+
+    <div class="default--padding-top--100">
+        <Marquee tag="span" style="h2" content={ navigation.title } />
+    </div>
+
+    <div class="sidebar-content default--padding-horizontal--100 default--padding-bottom--100">
+        <div class="sidebar-content__sidebar">
+            <div class="sticky default--padding-top--100">
+                <span class="detail text--text-small-dark">{ navigation.detail }</span>
+            </div>
+        </div>
+
+        <ul class="sidebar-content__detail">
+            {
+                navigation.socialMediaCollection.items.map( ( link, index ) => (
+                    <SocialLink dark="true" content={ link } count={ index + 1 } />
+                ))
+            }
+        </ul>
+
+        <ul class="sidebar-content__content default--padding-top--100">
+            {
+                navigation.linksCollection.items.map( ( link, index ) => (
+                    <NavigationLink dark="true" slug={ link.slug } title={ link.title } year={ link.year } detail={ link.detail } count={ index + 1 } />
+                ))
+            }
+        </ul>
+    </div>
+</nav>

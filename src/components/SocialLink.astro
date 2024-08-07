@@ -1,8 +1,10 @@
 ---
-const { content, count } = Astro.props;
+const { dark, content, count } = Astro.props;
 
 const marginTop = ( count > 1 ) ? 'default--margin-top--50' : '';
+const textColor = ( dark ) ? 'text--text-small-dark' : 'text--text-small';
 ---
 <li class={ marginTop }>
-    <a href={ content.url } target="_blank" rel="noopener noreferrer" class="detail text--text-small">{ content.name }</a>
+    <a href={ content.url } target="_blank" rel="noopener noreferrer" class:list={[ "detail", textColor
+    ]}>{ content.name }</a>
 </li>

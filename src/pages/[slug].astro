@@ -2,6 +2,7 @@
 import { contentfulClient, contentfulGraphQLClient } from "../lib/contentful";
 
 import Head from '../components/Head.astro';
+import Navigation from '../modules/Navigation.astro';
 import NavigationBar from '../components/NavigationBar.astro';
 import CaseStudy from '../layouts/CaseStudy.astro';
 import Footer from '../modules/Footer.astro';
@@ -41,6 +42,8 @@ const metadataUrl = 'https://kyleconrad.com/' + caseStudy.slug + '/';
     />
 
     <body class="bkg--fill">
+        <Navigation />
+        
         <main>
             <NavigationBar color="default" text="true" headline={ home.hero.headline } subhead={ home.hero.detail } />
 

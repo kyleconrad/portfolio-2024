@@ -1,7 +1,7 @@
 ---
-const { color, position } = Astro.props;
+const { state, color, position } = Astro.props;
 ---
-<button class:list={[ "nav__control", color, position ]}>
+<button class:list={[ "nav__control", state, color, position ]}>
     <svg viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M37.2645 28.9436C37.2645 28.9436 31.3696 20.3032 22.062 20.3032C12.7542 20.3032 6.85922 28.9436 6.85922 28.9436" />
         <path d="M36.3993 27.4472C36.3993 27.4472 32.2439 30.8949 29.0603 33.3328C26.4314 35.3454 23.8028 35.9629 22.0498 35.9629H22.1724C20.4201 35.9629 17.7912 35.3454 15.1623 33.3328C11.9787 30.8949 7.82324 27.682 7.82324 27.682" />
@@ -20,4 +20,29 @@ const { color, position } = Astro.props;
             <rect y="10.5" width="16" height="1" />
         </svg>            
     </div>
+
+    <div class="nav__control__close">
+        <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1.98959" y="12.3033" width="16" height="1" transform="rotate(-45 1.98959 12.3033)" />
+            <rect x="2.6967" y="0.989624" width="16" height="1" transform="rotate(45 2.6967 0.989624)" />
+        </svg>
+    </div>
 </button>
+
+<script>
+    const   $body = document.querySelector( 'body' );
+
+    const   navControls = document.querySelectorAll<HTMLElement>( '.nav__control' );
+
+
+
+    navControls.forEach( ( control ) => {
+        control.addEventListener( 'click', ( e ) => {
+            $body.classList.toggle( 'nav--open' );
+            
+            control.blur();
+
+            e.preventDefault();
+        });
+    });
+</script>

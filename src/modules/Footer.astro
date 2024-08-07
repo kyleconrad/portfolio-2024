@@ -15,7 +15,7 @@ const { marquee, content } = Astro.props;
             <ul class="sticky default--padding-top--100">
                 {
                     content.socialMediaCollection.items.map( ( link, index ) => (
-                        <SocialLink content={ link } count={ index + 1 } />
+                        <SocialLink dark="false" content={ link } count={ index + 1 } />
                     ))
                 }
             </ul>

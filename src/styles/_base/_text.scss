@@ -29,7 +29,8 @@
 //// Headlines
 .h1,
 .h2,
-.h5 {
+.h5,
+.h6 {
     $horizontal-adjustment: -0.005em;
     $vertical-adjustment: 0.0065em;
 
@@ -73,6 +74,10 @@
 }
 
 .h5 {
+    @include fontvwclamp( 100, 140, 220 );
+}
+
+.h6 {
     @include fontvwclamp( 60, 120, 180 );
 }
 
@@ -315,7 +320,7 @@ a.detail,
     .h5 { 
         background:
             url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
-            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 100%,
+            url( '/images/bkg/bkg--headline-small.svg' ) no-repeat left top / 100% 100%,
             var( --text-large );
         background-blend-mode:
             multiply,
@@ -343,6 +348,8 @@ a.detail,
 
             background: transparent;
             color: transparent;
+
+            filter: blur( 0px );
         }
     }
 }
