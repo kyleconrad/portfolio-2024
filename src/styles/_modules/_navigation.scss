@@ -1,7 +1,8 @@
 // Navigation
 
 .navigation {
-    display: none;
+    // display: none;
+    visibility: hidden;
 
     position: fixed;
     top: 0;
@@ -12,9 +13,14 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
+    pointer-events: none;
+
 
 
     .nav--open & {
-        display: block;
+        // display: block;
+        visibility: visible;
+
+        pointer-events: auto;
     }
 }

@@ -27,8 +27,7 @@ const Element = tag;
                     marqueeWidth = marqueeRect.width,
                     marqueeX = 0;
 
-            let     difference = marqueeWidth - bodyWidth,
-                    differencePercent = ( difference / marqueeWidth ) * 100;
+            let     difference = marqueeWidth - bodyWidth;
 
             let     startMotion = false;
             
@@ -39,6 +38,8 @@ const Element = tag;
             //// Get mouse position & allow animation if in view
             function mousePos( e ) {
                 mousePosX = e.pageX;
+                
+
                 
                 if ( canHover && isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
                     startMotion = true;
@@ -98,6 +99,8 @@ const Element = tag;
                 let     rect = element.getBoundingClientRect(),
                         multiplier = 0.15;
 
+
+                        
                 return (
                     rect.top >= ( window.innerHeight * multiplier * -1 || document.documentElement.clientHeight * multiplier * -1 ) &&
                     rect.left >= 0 &&
