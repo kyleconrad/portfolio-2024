@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "open-browser": "open http://localhost:4321/",
-    "update": "npm-check --update"
+    "update": "npm-check --update",
+    "deploy": "./deploy.sh"
   },
   "repository": {
     "type": "git",
