@@ -10,7 +10,7 @@ const { content } = Astro.props;
 <main>
     <NavigationBar color="default" text="false" />
 
-    <HeroHome content={ content.hero } />
+    <HeroHome detail={ content.detail } content={ content.hero } />
 
     <TableOfContents content={ content.caseStudiesCollection } />
 
@@ -20,5 +20,5 @@ const { content } = Astro.props;
         ))
     }
 
-    <Footer marquee={ content.hero.detail } content={ content.about } />
+    <Footer marquee={ content.detail } content={ content.about } />
 </main>

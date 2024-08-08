@@ -15,7 +15,7 @@ export const contentfulClient = contentful.createClient({
 
 
 
-// Overall API call to GraphQL Conentful API
+// Overall API call to GraphQL Contentful API
 async function apiCall( query, variables ) {
 	const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${$SPACE}/environments/master`;
 
@@ -43,12 +43,12 @@ async function getHome() {
 				metadataImage {
 					url
 				}
+				detail
 				hero {
 					headline
 					subheadRich {
 						json
 					}
-					detail
 				}
 				caseStudiesCollection {
 					items {

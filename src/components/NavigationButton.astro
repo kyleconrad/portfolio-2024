@@ -30,7 +30,8 @@ const { state, color, position } = Astro.props;
 </button>
 
 <script>
-    const   $body = document.querySelector( 'body' );
+    const   $body = document.querySelector( 'body' ),
+            $nav = document.querySelector( '#navigation' );
 
     const   navControls = document.querySelectorAll<HTMLElement>( '.nav__control' );
 
@@ -38,6 +39,12 @@ const { state, color, position } = Astro.props;
 
     navControls.forEach( ( control ) => {
         control.addEventListener( 'click', ( e ) => {
+            $nav.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant',
+            });
+
             $body.classList.toggle( 'nav--open' );
             
             control.blur();

@@ -8,7 +8,7 @@ import SocialLink from '../components/SocialLink.astro';
 
 const navigation = await contentfulGraphQLClient.getNavigation();
 ---
-<nav class="navigation bkg--navigation">
+<nav id="navigation" class="navigation bkg--navigation">
     <NavigationButton state="close" color="light" position="fixed" />
 
     <div class="default--padding-top--100">

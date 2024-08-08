@@ -4,7 +4,7 @@ import { headlineOptions } from "../lib/contentful";
 
 import Marquee from '../components/Marquee.astro';
 
-const { content } = Astro.props;
+const { detail, content } = Astro.props;
 
 const firstName = content.headline.split( ' ' )[ 0 ];
 const lastName = content.headline.split( ' ' )[ 1 ];
@@ -14,7 +14,7 @@ const lastName = content.headline.split( ' ' )[ 1 ];
         <h1 class="h1 text--headline--large text--headline--large--top">{ firstName }</h1>
     </div>
 
-    <span class="hero-home__detail detail text--text-small">{ content.detail }</span>
+    <span class="hero-home__detail detail text--text-small">{ detail }</span>
 
     <h3 class="hero-home__content h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
 

@@ -16,6 +16,8 @@ const Element = tag;
         constructor() {
             super();
 
+            const   canHover = window.matchMedia( '(hover: hover)' ).matches;
+
             const   container = this.querySelector<HTMLElement>( '.marquee-container' ),
                     marquee = this.querySelector<HTMLElement>( '.marquee' );
 
@@ -38,7 +40,7 @@ const Element = tag;
             function mousePos( e ) {
                 mousePosX = e.pageX;
                 
-                if ( isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
+                if ( canHover && isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
                     startMotion = true;
                 }
                 else {
@@ -72,18 +74,6 @@ const Element = tag;
 
                     if ( marqueeX < ( difference * -1 ) ) marqueeX = ( difference * -1 );
                     if ( marqueeX > 0 ) marqueeX = 0;
-
-
-
-                //     if ( marqueeX >= -100 && marqueeX <= 0 ) {
-                //         // marquee.style.translate = ( ( marqueeX / 100 ) * difference ) + 'px 0';
-                //         marquee.style.translate = ( ( marqueeX / 100 ) * differencePercent ) + '% 0';
-
-                //         marqueeX += velocity;
-                //     }
-
-                //     if ( marqueeX < -100 ) marqueeX = -100;
-                //     if ( marqueeX > 0 ) marqueeX = 0;
                 }
             }
 
@@ -125,19 +115,6 @@ const Element = tag;
                     checkVisibilityCSS: true
                 });
             }
-
-
-
-            //// Get translate positions
-            // function getTranslateXY( element ) {
-            //     const   style = window.getComputedStyle( element ),
-            //             matrix = new DOMMatrixReadOnly( style.transform );
-
-            //     return {
-            //         translateX: matrix.m41,
-            //         translateY: matrix.m42
-            //     }
-            // }
         }
     }
 
