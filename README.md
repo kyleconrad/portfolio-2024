@@ -3,9 +3,10 @@ Astro build of Kyle Conrad's 2024 portfolio redesign/rebuild using Contentful as
 ---
 
 ## Local Setup
-Running local set up will install all necessary bundles and dependencies.
+Running local set up will install all necessary bundles and dependencies. [Install nvm](https://github.com/nvm-sh/nvm) to ensure you are using the correct node version.
     
     $ cd portfolio-2024
+    $ nvm install
     $ npm install
 
 ---
@@ -19,7 +20,7 @@ Running development will run a local server with Astro and open the browser to t
 ---
 
 ## Building
-Building will compile and minify all Sass/CSS and convert all Astro files and Contentful content into a static site. This will result with the entire site ready in the correct directories for deployment.
+Building will compile and minify all Sass/CSS, compress HTML & JS, and gzip all public content while converting all Astro files and Contentful content into a static site. This will result with the entire site ready in the correct directories for deployment.
 
     $ cd portfolio-2024
     $ npm run build
