@@ -134,7 +134,8 @@ async function getHome() {
 									videoPoster {
 										url
 									}
-									audio
+									audioBoolean
+									loop
 								}
 							}
 						}
@@ -301,7 +302,8 @@ async function getCaseStudy( id ) {
 							videoPoster {
 								url
 							}
-							audio
+							audioBoolean
+							loop
 						}
 					}
 				}

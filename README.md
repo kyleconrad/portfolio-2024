@@ -37,7 +37,7 @@ To test the static site prior to deployment (and for other content audits), the 
 ---
 
 ## Deploying
-Deploying pushes the site to Amazon S3/Cloudfront and invalidates all existing caches, ensuring visitors get the most up to date versions of content, images, and video. You must have the [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and credentials set up. All S3 bucket and Cloudfront distribution information is stored in a secret `.env` file.
+Deploying pushes the site to Amazon S3 and invalidates all existing Cloudfront caches, ensuring visitors get the most up to date versions of the site and content. You must have the [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) and credentials set up. All S3 bucket and Cloudfront distribution information is stored in a secret `.env` file.
 
     $ cd portfolio-2024
     $ npm run build

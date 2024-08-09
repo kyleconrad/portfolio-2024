@@ -5,8 +5,10 @@ const { content } = Astro.props;
 
 const poster = content.videoPoster.url + '?fm=webp&w=1200';
 
-const audio = ( String( content.audio ).toLowerCase() === 'true' );
+const audio = content.audioBoolean;
 const controlAlign = ( audio ) ? 'default--flex--align-center' : 'default--flex--align-end';
+
+const loop = content.loop;
 ---
 <video-container>
     <div class="video-container z--1">
