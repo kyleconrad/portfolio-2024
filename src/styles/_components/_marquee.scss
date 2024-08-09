@@ -1,6 +1,8 @@
 // Marquee
 
-@media ( hover: none ) {
+@media  ( hover: none ),
+        ( prefers-reduced-motion: reduce ) {
+
     .marquee-scroll-wrapper {
         overflow-y: hidden;
     }
@@ -13,4 +15,5 @@
 
         margin-bottom: calc( var( --scrollbar ) * -1 );
     }
+    
 }

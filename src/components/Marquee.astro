@@ -16,7 +16,9 @@ const Element = tag;
         constructor() {
             super();
 
-            const   canHover = window.matchMedia( '(hover: hover)' ).matches;
+            const   canHover = window.matchMedia( '(hover: hover)' ).matches,
+                    isReduced = window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
 
             const   container = this.querySelector<HTMLElement>( '.marquee-container' ),
                     marquee = this.querySelector<HTMLElement>( '.marquee' );
@@ -41,7 +43,7 @@ const Element = tag;
                 
 
                 
-                if ( canHover && isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
+                if ( canHover && !isReduced && isElementInView( container ) && isElementVisible( container ) && marqueeWidth > bodyWidth ) {
                     startMotion = true;
                 }
                 else {
