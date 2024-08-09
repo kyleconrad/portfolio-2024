@@ -7,7 +7,7 @@
     "dev": "npm run open-browser && astro dev",
     "start": "npm run open-browser && astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npm run open-browser && astro preview",
     "open-browser": "open http://localhost:4321/",
     "update": "npm-check --update",
     "deploy": "./deploy.sh"
