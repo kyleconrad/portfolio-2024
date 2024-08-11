@@ -91,13 +91,13 @@
 
 
     &--left {
-        grid-template-columns: calc( var( --sidebar ) + ( var( --spacing ) * 0.525 ) ) 1fr; 
+        grid-template-columns: calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 3 ) ) 1fr;
         grid-template-areas: 
             "caption image";
     }
 
     &--right {
-        grid-template-columns: 1fr calc( var( --sidebar ) + ( var( --spacing ) * 0.525 ) );
+        grid-template-columns: 1fr calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 3 ) );
         grid-template-areas: 
             "image caption";
     }
@@ -168,17 +168,19 @@
 
     
     
-    // &--left {
-    //     grid-template-areas: 
-    //         "caption caption"
-    //         "columnLeft columnRight";
-    // }
+    &--left {
+        grid-template-columns: calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 2 ) + var( --spacing ) ) 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            "caption columnLeft columnRight";
+    }
 
-    // &--right {
-    //     grid-template-areas: 
-    //         "columnLeft columnRight"
-    //         "caption caption";
-    // }
+    &--right {
+        grid-template-columns: 1fr 1fr calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 2 ) + var( --spacing ) );
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            "columnLeft columnRight caption";
+    }
 
     // &--full {
     //     grid-template-rows: auto;
@@ -190,8 +192,22 @@
 .columns-image__caption {
     grid-area: caption;
 
+    align-self: start;
+
     padding: calc( var( --spacing ) - var( --spacingCompact ) );
-    padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
+    
+
+
+    .columns-image--full &,
+    .columns-image--right & {
+        padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
+    }
+
+    .columns-image--right &,
+    .columns-image--left & {
+        position: sticky;
+        top: 0;
+    }
 }
 
 .columns-image__column--left {

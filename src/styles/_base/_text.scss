@@ -290,6 +290,10 @@ a.detail,
     font-weight: $font-copy--weight;
 
     @include fontvwmath( 14, 14, 18, 18, -0.5 );
+
+    em {
+        font-style: italic;
+    }
 }
 
 

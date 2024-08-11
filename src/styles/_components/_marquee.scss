@@ -5,6 +5,10 @@
 
     .marquee-scroll-wrapper {
         overflow-y: hidden;
+
+        // padding-bottom: var( --scrollbar );
+
+        // margin-bottom: calc( var( --scrollbar ) * -1 );
     }
 
     .marquee-container {
@@ -14,6 +18,12 @@
         padding-bottom: var( --scrollbar );
 
         margin-bottom: calc( var( --scrollbar ) * -1 );
+
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     
 }
