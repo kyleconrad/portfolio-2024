@@ -25,7 +25,7 @@ const { subhead, year, detail, content } = Astro.props;
 
     { ( content.url ) &&
         <div class="default--padding-top--100">
-            <Button url="google.com" />
+            <Button url={ content.url } />
         </div>
     }
 </section>
