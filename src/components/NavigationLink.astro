@@ -3,7 +3,7 @@ const { dark, scroll, slug, title, year, detail, count } = Astro.props;
 
 const marginTop = ( count > 1 ) ? 'default--margin-top--25' : '';
 
-const textColor = ( dark ) ? 'text--text-small-dark' : 'text--text-small';
+const textColor = ( dark === 'true' ) ? 'text--text-small-dark' : 'text--text-small';
 const link = ( scroll ) ? '#' + slug : '/' + slug + '/';
 ---
 <li class={ marginTop }>
