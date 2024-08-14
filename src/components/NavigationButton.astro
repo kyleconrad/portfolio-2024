@@ -1,8 +1,10 @@
 ---
+// @ts-nocheck
+
 const { state, color, position } = Astro.props;
 ---
 <button class:list={[ "nav__control", state, color, position ]}>
-    <svg viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 44 40" fill="none" xmlns="http://www.w3.org/2000/svg" draggable="false">
         <path d="M37.2645 28.9436C37.2645 28.9436 31.3696 20.3032 22.062 20.3032C12.7542 20.3032 6.85922 28.9436 6.85922 28.9436" />
         <path d="M36.3993 27.4472C36.3993 27.4472 32.2439 30.8949 29.0603 33.3328C26.4314 35.3454 23.8028 35.9629 22.0498 35.9629H22.1724C20.4201 35.9629 17.7912 35.3454 15.1623 33.3328C11.9787 30.8949 7.82324 27.682 7.82324 27.682" />
         <path fill-rule="evenodd" clip-rule="evenodd" d="M24.3414 26.8863C24.3414 28.1929 23.3068 29.2521 22.0305 29.2521C20.7541 29.2521 19.7196 28.1929 19.7196 26.8863C19.7196 25.5796 20.7541 24.5204 22.0305 24.5204C23.3068 24.5204 24.3414 25.5796 24.3414 26.8863Z" />
@@ -14,7 +16,7 @@ const { state, color, position } = Astro.props;
     </svg>
 
     <div class="nav__control__hover">
-        <svg viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" draggable="false">
             <rect y="0.5" width="16" height="1" />
             <rect y="5.5" width="16" height="1" />
             <rect y="10.5" width="16" height="1" />
@@ -22,7 +24,7 @@ const { state, color, position } = Astro.props;
     </div>
 
     <div class="nav__control__close">
-        <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg" draggable="false">
             <rect x="1.98959" y="12.3033" width="16" height="1" transform="rotate(-45 1.98959 12.3033)" />
             <rect x="2.6967" y="0.989624" width="16" height="1" transform="rotate(45 2.6967 0.989624)" />
         </svg>

@@ -79,8 +79,6 @@
 
 
 
-
-
 //// Single column image
 .sidebar-image {
     display: grid; 
@@ -91,13 +89,13 @@
 
 
     &--left {
-        grid-template-columns: calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 3 ) ) 1fr;
+        grid-template-columns: calc( var( --sidebar ) + ( var( --spacing ) * 0.5 ) ) 1fr;
         grid-template-areas: 
             "caption image";
     }
 
     &--right {
-        grid-template-columns: 1fr calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 3 ) );
+        grid-template-columns: 1fr calc( var( --sidebar ) + ( var( --spacing ) * 0.5 ) );
         grid-template-areas: 
             "image caption";
     }
@@ -169,14 +167,14 @@
     
     
     &--left {
-        grid-template-columns: calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 2 ) + var( --spacing ) ) 1fr 1fr;
+        grid-template-columns: calc( var( --sidebar ) + ( var( --spacing ) * 1.5 ) - var( --spacingCompact ) ) 1fr 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: 
             "caption columnLeft columnRight";
     }
 
     &--right {
-        grid-template-columns: 1fr 1fr calc( 100vw * var( --sidebarMath ) + ( var( --spacingCompact ) * 2 ) + var( --spacing ) );
+        grid-template-columns: 1fr 1fr calc( var( --sidebar ) + ( var( --spacing ) * 1.5 ) - var( --spacingCompact ) );
         grid-template-rows: 1fr;
         grid-template-areas: 
             "columnLeft columnRight caption";
