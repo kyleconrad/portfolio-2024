@@ -180,6 +180,15 @@ main {
 		normal;
 }
 
+.safari .bkg--media {
+	background:
+		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
+		var( --copy );
+	background-blend-mode:
+		lighten,
+		normal;
+}
+
 
 .bkg--navigation {
 	background:

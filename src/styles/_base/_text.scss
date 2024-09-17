@@ -286,9 +286,9 @@ em p {
 
     @include fontvwmath( 10, 12, 16, 16, -0.5 );
 
-    &:not(:last-child) {
-        margin-bottom: 0.5em;
-    }
+    // &:not(:last-child) {
+    //     margin-bottom: 0.5em;
+    // }
 }
 
 .sidebar-content__detail a {
@@ -364,9 +364,14 @@ a.detail,
     columns: 2;
     column-gap: var( --spacing );
 
+    margin-bottom: -1.4vw;
+
 
 
     p {
+        display: inline-block;
+        width: 100%;
+
         break-inside: avoid-column;
     }
 }
