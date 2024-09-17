@@ -20,6 +20,7 @@ const { title, description, image, url } = Astro.props;
     <link rel="me" href="mailto:kyle@kyleconrad.com">
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon64-dark.png">
     <link rel="icon" id="fav96" type="image/svg+xml" sizes="96x96" href="/icons/favicon96-light.svg">
     <link rel="icon" id="fav64" type="image/svg+xml" sizes="64x64" href="/icons/favicon64-light.svg">
     <link rel="icon" id="fav48" type="image/svg+xml" sizes="48x48" href="/icons/favicon48-light.svg">
@@ -53,6 +54,14 @@ const { title, description, image, url } = Astro.props;
 
 <script>
     const iconSizes = [ 96, 64, 48, 32 ];
+
+
+
+    let chromeAgent = navigator.userAgent.indexOf( "Chrome" ) > -1;
+    let safariAgent = navigator.userAgent.indexOf( "Safari" ) > -1;
+    if ( ( chromeAgent ) && ( safariAgent ) ) safariAgent = false; 
+
+    if ( safariAgent ) document.querySelector( 'body' ).classList.add( 'safari' );
 
 
 

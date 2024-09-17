@@ -31,8 +31,8 @@
 .h2,
 .h5,
 .h6 {
-    $horizontal-adjustment: -0.005em;
-    $vertical-adjustment: 0.0065em;
+    --horizontal-adjustment: -0.005em;
+    --vertical-adjustment: 0.0065em;
 
     display: block;
 
@@ -47,11 +47,11 @@
     cursor: default;
 
     white-space: nowrap;
-    margin-left: $horizontal-adjustment;
-    margin-right: $horizontal-adjustment;
-    margin-top: -#{ $vertical-adjustment };
+    margin-left: var( --horizontal-adjustment );
+    margin-right: var( --horizontal-adjustment );
+    margin-top: calc( var( --vertical-adjustment ) * -1 );
 
-    padding-top: $vertical-adjustment;
+    padding-top: var( --vertical-adjustment );
     // padding-bottom: $vertical-adjustment;
 
     @include text-crop( $top-crop: -8, $bottom-crop: 3.5, $line-height: 1 );
@@ -61,18 +61,22 @@
     .marquee & {
         margin-top: 0;
         
-        padding-bottom: $vertical-adjustment;
-    }
-
-
-
-    @include breakpoint( landscape ) {
-        padding-top: $vertical-adjustment * 1.25;
+        padding-bottom: var( --vertical-adjustment );
     }
 }
 
+.h5 {
+    padding-top: calc( var( --vertical-adjustment ) * 2.5 );
+}
+
 .h1 {
-    @include fontvwclamp( 714, 896, 2000 );
+    @include fontvwclamp( 600, 896, 2000 );
+}
+
+@media ( hover: none ) {
+    .h1 {
+        @include fontvwclamp( 600, 906, 2000 );
+    }
 }
 
 .h2 {
@@ -140,13 +144,56 @@
 
 
 
-    @supports ( -webkit-touch-callout: none ) {
+    &--top {
         background:
-            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 100%,
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
             var( --text-large );
-        background-blend-mode:
-            normal,
-            normal;
+
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0.25px );
+    }
+
+    &--bottom {
+        background:
+            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
+            var( --text-large );
+
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0.25px );
+    }
+}
+
+.safari .text--headline--large {
+    background:
+        url( '/images/bkg/bkg--headline--safari.webp' ) repeat-x left top / 100vw 50vw,
+        var( --text-large );
+    background-blend-mode:
+        normal,
+        normal;
+    
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter: blur( 0 );
+    
+
+
+    &--top {
+        background:
+            url( '/images/bkg/bkg--headline--safari.webp' ) no-repeat left top / 200% 150%,
+            var( --text-large );
         
         -webkit-text-fill-color: transparent;
         color: transparent;
@@ -156,76 +203,17 @@
         filter: blur( 0 );
     }
 
-
-
-    &--top {
-        background:
-            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
-            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
-            var( --text-large );
-        background-blend-mode:
-            multiply,
-            normal,
-            normal;
-
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        transform: translate3d(0,0,0);
-
-
-
-        @supports ( -webkit-touch-callout: none ) {
-            background:
-                url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
-                var( --text-large );
-            background-blend-mode:
-                normal,
-                normal;
-            
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            filter: blur( 0 );
-        }
-    }
-
     &--bottom {
         background:
-            url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
-            url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
+            url( '/images/bkg/bkg--headline--safari.webp' ) no-repeat left bottom / 100% 200%,
             var( --text-large );
-        background-blend-mode:
-            multiply,
-            normal,
-            normal;
-
+        
         -webkit-text-fill-color: transparent;
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
 
-
-
-        @supports ( -webkit-touch-callout: none ) {
-            background:
-                url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
-                var( --text-large );
-            background-blend-mode:
-                normal,
-                normal;
-            
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            filter: blur( 0 );
-        }
+        filter: blur( 0 );
     }
 }
 
@@ -411,24 +399,6 @@ a.detail,
         filter: blur( 0.25px );
         
         cursor: pointer;
-
-
-
-        @supports ( -webkit-touch-callout: none ) {
-            background:
-                url( '/images/bkg/bkg--headline-small.svg' ) no-repeat left top / 100% 100%,
-                var( --text-large );
-            background-blend-mode:
-                normal,
-                normal;
-            
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-    
-            filter: blur( 0 );
-        }
     }
 
 
@@ -444,6 +414,33 @@ a.detail,
             color: transparent;
 
             filter: blur( 0px );
+        }
+    }
+}
+
+.safari .navigation-link {
+    .h5 { 
+        background:
+            url( '/images/bkg/bkg--headline-small--safari.webp' ) no-repeat left top / 100% 100%,
+            var( --text-large );
+        
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0px );
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        .h5 {
+            -webkit-text-stroke: 1px var( --text-small );
+            text-stroke: 1px var( --text-small );
+
+            background: transparent;
+            color: transparent;
         }
     }
 }
@@ -468,27 +465,9 @@ a.detail,
     -webkit-background-clip: text;
     background-clip: text;
 
-    // filter: blur( 0.25px );
+    filter: blur( 0.25px );
 
     cursor: pointer;
-
-
-
-    @supports ( -webkit-touch-callout: none ) {
-        background:
-            url( '/images/bkg/bkg--fill.svg' ) no-repeat left top / 100% 100%,
-            var( --fill );
-        background-blend-mode:
-            normal,
-            normal;
-        
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        // filter: blur( 0px );
-    }
 }
 
 .button {
@@ -501,8 +480,34 @@ a.detail,
     
             background: transparent;
             color: transparent;
+
+            filter: blur( 0 );
         }
     }    
+}
+
+.safari .button {
+    span {
+        background:
+            url( '/images/bkg/bkg--fill--safari.webp' ) no-repeat left top / 100% 100%,
+            var( --fill );
+        
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0 );
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        span {
+            background: transparent;
+            color: transparent;
+        }
+    }  
 }
 
 

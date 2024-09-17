@@ -8,8 +8,6 @@
         multiply,
         normal;
 
-    filter: blur( 0.25px );
-
 
 
     &:hover,
@@ -21,11 +19,5 @@
         background-blend-mode:
             multiply,
             normal;
-    }
-
-
-
-    @supports ( -webkit-touch-callout: none ) {
-        filter: blur( 0 );
     }
 }

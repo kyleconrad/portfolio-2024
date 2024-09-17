@@ -122,28 +122,30 @@
     }
 }
 
-.nav__control {
-    &.open {
-        &:hover,
-        &:focus {
-            & > svg {
-                opacity: 0;
-            }
+@media ( hover: hover ) {
+    .nav__control {
+        &.open {
+            &:hover,
+            &:focus {
+                & > svg {
+                    opacity: 0;
+                }
 
-            .nav__control__hover {
-                opacity: 1;
+                .nav__control__hover {
+                    opacity: 1;
+                }
             }
         }
-    }
 
-    &.close {
-        &:hover,
-        &:focus {
-            .nav__control__close {
-                background: var( --fill );
+        &.close {
+            &:hover,
+            &:focus {
+                .nav__control__close {
+                    background: var( --fill );
 
-                & > svg {
-                    fill: var( --copy );
+                    & > svg {
+                        fill: var( --copy );
+                    }
                 }
             }
         }

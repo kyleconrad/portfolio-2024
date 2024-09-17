@@ -7,7 +7,7 @@
 	@return (math.div($size, $base) * $unit);
 }
 @function font-vw-math($size) {
-	@return (math.div($size, 1440) * 100vw);
+	@return (math.div($size, 1440) * 100dvw);
 }
 @function font-vwraw-math($size) {
 	@return (math.div($size, 1440) * 100);
