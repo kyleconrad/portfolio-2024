@@ -63,10 +63,16 @@
         
         padding-bottom: $vertical-adjustment;
     }
+
+
+
+    @include breakpoint( landscape ) {
+        padding-top: $vertical-adjustment * 1.25;
+    }
 }
 
 .h1 {
-    @include fontvwclamp( 700, 896, 2000 );
+    @include fontvwclamp( 714, 896, 2000 );
 }
 
 .h2 {
@@ -103,11 +109,11 @@
 }
 
 .h3 {
-    @include fontvwclamp( 80, 120, 280 );
+    @include fontvwclamp( 72, 120, 280 );
 }
 
 .h4 {
-    @include fontvwclamp( 72, 104, 120 );
+    @include fontvwclamp( 64, 104, 120 );
 }
 
 
@@ -134,15 +140,58 @@
 
 
 
+    @supports ( -webkit-touch-callout: none ) {
+        background:
+            url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 100%,
+            var( --text-large );
+        background-blend-mode:
+            normal,
+            normal;
+        
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        filter: blur( 0 );
+    }
+
+
+
     &--top {
         background:
             url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
             url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
             var( --text-large );
+        background-blend-mode:
+            multiply,
+            normal,
+            normal;
+
         -webkit-text-fill-color: transparent;
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
+
+        transform: translate3d(0,0,0);
+
+
+
+        @supports ( -webkit-touch-callout: none ) {
+            background:
+                url( '/images/bkg/bkg--headline.svg' ) no-repeat left top / 100% 200%,
+                var( --text-large );
+            background-blend-mode:
+                normal,
+                normal;
+            
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            filter: blur( 0 );
+        }
     }
 
     &--bottom {
@@ -150,10 +199,33 @@
             url( '/images/noise-i--25.png' ) repeat left top / 150px 150px,
             url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
             var( --text-large );
+        background-blend-mode:
+            multiply,
+            normal,
+            normal;
+
         -webkit-text-fill-color: transparent;
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
+
+
+
+        @supports ( -webkit-touch-callout: none ) {
+            background:
+                url( '/images/bkg/bkg--headline.svg' ) no-repeat left bottom / 100% 200%,
+                var( --text-large );
+            background-blend-mode:
+                normal,
+                normal;
+            
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            filter: blur( 0 );
+        }
     }
 }
 
@@ -339,6 +411,24 @@ a.detail,
         filter: blur( 0.25px );
         
         cursor: pointer;
+
+
+
+        @supports ( -webkit-touch-callout: none ) {
+            background:
+                url( '/images/bkg/bkg--headline-small.svg' ) no-repeat left top / 100% 100%,
+                var( --text-large );
+            background-blend-mode:
+                normal,
+                normal;
+            
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+    
+            filter: blur( 0 );
+        }
     }
 
 
@@ -378,9 +468,27 @@ a.detail,
     -webkit-background-clip: text;
     background-clip: text;
 
-    filter: blur( 0.25px );
+    // filter: blur( 0.25px );
 
     cursor: pointer;
+
+
+
+    @supports ( -webkit-touch-callout: none ) {
+        background:
+            url( '/images/bkg/bkg--fill.svg' ) no-repeat left top / 100% 100%,
+            var( --fill );
+        background-blend-mode:
+            normal,
+            normal;
+        
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        // filter: blur( 0px );
+    }
 }
 
 .button {

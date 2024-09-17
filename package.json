@@ -4,8 +4,8 @@
   "description": "Astro build of Kyle Conrad's 2024 portfolio redesign/rebuild using Contentful as the content management system.",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run open-browser && astro dev",
-    "start": "npm run open-browser && astro dev",
+    "dev": "npm run open-browser && astro dev --host",
+    "start": "npm run open-browser && astro dev --host",
     "build": "astro build",
     "preview": "npm run open-browser && astro preview",
     "open-browser": "open http://localhost:4321/",
@@ -25,12 +25,12 @@
   "homepage": "https://github.com/kyleconrad/portfolio-2024#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.1.6",
-    "@contentful/rich-text-html-renderer": "^16.6.8",
+    "@contentful/rich-text-html-renderer": "^16.6.10",
     "@playform/compress": "^0.1.1",
-    "astro": "^4.13.2",
+    "astro": "^4.15.6",
     "astro-compressor": "^0.4.1",
-    "contentful": "^10.13.2",
-    "sass": "^1.77.8"
+    "contentful": "^10.15.1",
+    "sass": "^1.78.0"
   },
   "devDependencies": {
     "npm-check": "^6.0.1"

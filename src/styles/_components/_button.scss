@@ -22,4 +22,10 @@
             multiply,
             normal;
     }
+
+
+
+    @supports ( -webkit-touch-callout: none ) {
+        filter: blur( 0 );
+    }
 }
