@@ -33,6 +33,10 @@
 	@include breakpoint( portrait ) {
 		--sidebar: 25%;
 	}
+
+	@include breakpoint( mobile ) {
+		--sidebar: 30%;
+	}
 }
 
 
@@ -137,15 +141,15 @@ main {
 		}
 	} @else {
 		@include breakpoint( #{ $size } ) {
-			.#{ $size }-display--block {
+			.#{ $size }--display--block {
 				display: block;
 			}
 
-			.#{ $size }-display--flex {
+			.#{ $size }--display--flex {
 				display: flex;
 			}
 
-			.#{ $size }-display--none {
+			.#{ $size }--display--none {
 				display: none;
 			}
 		}
@@ -193,6 +197,12 @@ main {
 	background-blend-mode:
 		lighten,
 		normal;
+	
+	
+
+	@include breakpoint( mobile ) {
+		background: var( --copy );
+	}
 }
 
 
@@ -205,6 +215,12 @@ main {
 		lighten,
 		normal,
 		normal;
+
+	
+
+	@include breakpoint( mobile ) {
+		background: var( --copy );
+	}
 }
 
 

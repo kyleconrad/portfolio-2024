@@ -6,8 +6,8 @@ const marginTop = ( count > 1 ) ? 'default--margin-top--25' : '';
 const textColor = ( dark === 'true' ) ? 'text--text-small-dark' : 'text--text-small';
 const link = ( scroll ) ? '#' + slug : '/' + slug + '/';
 ---
-<li class={ marginTop }>
-    <a href={ link } class="navigation-link default--flex--row default--flex--gap--25">
+<li class:list={[ "navigation-link__container", marginTop ]}>
+    <a href={ link } class="navigation-link default--flex--row default--flex--gap--25 mobile--padding-horizontal--100">
         <span class="h5">{ title }</span>
 
         <div class:list={[ "default--flex--column default--flex--end default--flex--gap--compact", textColor ]}>

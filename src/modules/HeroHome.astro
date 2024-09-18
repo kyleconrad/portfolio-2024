@@ -9,16 +9,20 @@ const { detail, content } = Astro.props;
 const firstName = content.headline.split( ' ' )[ 0 ];
 const lastName = content.headline.split( ' ' )[ 1 ];
 ---
-<header class="hero-home default--padding-top--100 default--padding-horizontal--100">
+<header class="hero-home default--padding-top--100 default--padding-horizontal--100 mobile--padding-horizontal--0">
     <div class="hero-home__first">
         <h1 class="h1 text--headline--large text--headline--large--top">{ firstName }</h1>
+
+        <div class="display--none mobile--display--block">
+            <Marquee tag="h1" style="h1" content={ content.headline } />
+        </div>
     </div>
 
-    <span class="hero-home__detail detail text--text-small">{ detail }</span>
+    <span class="hero-home__detail detail text--text-small mobile--padding-horizontal--100">{ detail }</span>
 
-    <h3 class="hero-home__content h3 text--text-large" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
+    <h3 class="hero-home__content h3 text--text-large mobile--padding-horizontal--100" set:html={ documentToHtmlString( content.subheadRich.json, headlineOptions ) } />
 
-    <div class="hero-home__last">
+    <div class="hero-home__last mobile--display--none">
         <h1 class="h1 text--headline--large text--headline--large--bottom">{ lastName }</h1>
     </div>
 </header>

@@ -7,7 +7,7 @@ import Button from '../components/Button.astro';
 const { subhead, year, detail, content } = Astro.props;
 ---
 <section class="default--padding-horizontal--100 default--padding-bottom--100">
-    <div class="sidebar-content">
+    <div class="sidebar-content sidebar-content--mobile">
         <div class="sidebar-content__sidebar">
             <div class="sticky default--padding-top--100 text--text-small">
                 <span class="detail">{ year }</span>
@@ -17,7 +17,7 @@ const { subhead, year, detail, content } = Astro.props;
 
         <div class="sidebar-content__detail text--text-small" set:html={ documentToHtmlString( content.detail.json, copyOptions ) } />
 
-        <div class="sidebar-content__content default--flex--grow default--flex--column default--flex--gap default--padding-top--100">
+        <div class="sidebar-content__content default--flex--grow default--flex--column default--flex--gap default--padding-top--100 mobile--padding-top--0">
             <h4 class="h4 text--text-large" set:html={ documentToHtmlString( subhead.json, headlineOptions ) } />
             <div class="content columns text--copy" set:html={ documentToHtmlString( content.description.json, copyOptions ) } />
         </div>

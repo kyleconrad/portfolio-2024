@@ -8,6 +8,13 @@
 .sticky {
     position: sticky;
     top: 0;
+
+
+
+    @include breakpoint( mobile ) {
+        position: relative;
+        top: auto;
+    }
 }
 
 
@@ -25,10 +32,39 @@
         "first detail"
         "first content"
         "last last";
+    
+
+    
+    @include breakpoint( mobile ) {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "detail"
+            "first"
+            "content";
+    }
 }
 
 .hero-home__first {
     grid-area: first;
+
+
+
+    @include breakpoint( mobile ) {
+        padding-top: calc( var( --spacingLarge ) * 0.35 );
+
+
+
+        .text--headline--large--top {
+            display: none;
+        }
+
+
+
+        & > div {
+            max-width: 100vw;
+        }
+    }
 }
 
 .hero-home__detail {
@@ -86,7 +122,7 @@
 @include breakpoint( portrait ) {
     .sidebar-content--navigation--portrait {
         grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto auto;
         grid-template-areas: 
             "sidebar detail"
             "content content";
@@ -116,6 +152,54 @@
     }
 }
 
+@include breakpoint( mobile ) {
+    .sidebar-content--mobile {
+        grid-template-columns: auto; 
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+            "sidebar"
+            "content"
+            "detail";
+        
+
+
+        .sidebar-content__sidebar .sticky {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            // gap: var( --spacing );
+            gap: 0;
+
+
+
+            & > span {
+                margin-top: 0;
+
+                &:first-child {
+                    width: var( --sidebar );
+                }
+            }
+
+            & > li {
+                margin-top: 0;
+
+                &:not(:first-child) {
+                    margin-left: calc( var( --spacing ) * 2 );
+                }
+            }
+        }
+    }
+
+    .sidebar-content--navigation--mobile {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 
+            "sidebar"
+            "content"
+            "detail";
+    }
+}
+
 
 
 //// Single column image
@@ -131,18 +215,44 @@
         grid-template-columns: calc( var( --sidebar ) + ( var( --spacing ) * 0.5 ) ) 1fr;
         grid-template-areas: 
             "caption image";
+
+
+        
+        @include breakpoint( mobile ) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                "caption"
+                "image";
+        }
     }
 
     &--right {
         grid-template-columns: 1fr calc( var( --sidebar ) + ( var( --spacing ) * 0.5 ) );
         grid-template-areas: 
             "image caption";
+        
+        
+
+        @include breakpoint( mobile ) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                "caption"
+                "image";
+        }
     }
 
     &--full {
         grid-template-columns: 1fr;
         grid-template-areas: 
             "image";
+    }
+
+
+
+    @include breakpoint( mobile ) {
+        gap: var( --spacingCompact )
     }
 }
 
@@ -158,13 +268,13 @@
 
 
 
-    .sidebar-image--left  & {
+    .sidebar-image--left & {
         padding-left: calc( var( --spacing ) - var( --spacingCompact ) );
     }
 
     .sidebar-image--right & {
         // top: calc( var( --spacing ) + var( --nav ) );
-        padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
+        // padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
         padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
 
         // &:before {
@@ -181,6 +291,19 @@
 
         //     content: '';
         // }
+
+        @include breakpoint( mobile ) {
+            padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
+        }
+    }
+
+
+
+    @include breakpoint( mobile ) {
+        position: relative;
+        top: auto;
+
+        padding: calc( var( --spacing ) - var( --spacingCompact ) );
     }
 }
 
@@ -210,6 +333,17 @@
         grid-template-rows: 1fr;
         grid-template-areas: 
             "caption columnLeft columnRight";
+        
+        
+
+        @include breakpoint( mobile ) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "caption"
+                "columnLeft"
+                "columnRight";
+        }
     }
 
     &--right {
@@ -217,13 +351,34 @@
         grid-template-rows: 1fr;
         grid-template-areas: 
             "columnLeft columnRight caption";
+        
+        
+        
+        @include breakpoint( mobile ) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "caption"
+                "columnLeft"
+                "columnRight";
+        }
     }
 
-    // &--full {
-    //     grid-template-rows: auto;
-    //     grid-template-areas: 
-    //         "columnLeft columnRight";
-    // }
+    &--full {
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "columnLeft columnRight";
+        
+        
+
+        @include breakpoint( mobile ) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                "columnLeft"
+                "columnRight";
+        }
+    }
 }
 
 .columns-image__caption {
@@ -238,12 +393,25 @@
     .columns-image--full &,
     .columns-image--right & {
         padding-right: calc( ( var( --spacing ) * 2 ) + var( --nav ) );
+
+
+
+        @include breakpoint( mobile ) {
+            padding-right: calc( var( --spacing ) - var( --spacingCompact ) );
+        }
     }
 
     .columns-image--right &,
     .columns-image--left & {
         position: sticky;
         top: 0;
+
+
+
+        @include breakpoint( mobile ) {
+            position: relative;
+            top: auto;
+        }
     }
 }
 

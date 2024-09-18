@@ -187,6 +187,19 @@
     background-clip: text;
 
     filter: blur( 0 );
+
+
+
+    @include breakpoint( mobile ) {
+        background:
+            url( '/images/bkg/bkg--headline--safari.webp' ) repeat-x left top / 100vw 100vw,
+            var( --text-large );
+        
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
     
 
 
@@ -322,6 +335,8 @@ em p {
     line-height: 1;
 
     text-transform: uppercase;
+
+    white-space: nowrap;
 
     @include text-crop( $bottom-crop: 3, $line-height: 1 );
 
