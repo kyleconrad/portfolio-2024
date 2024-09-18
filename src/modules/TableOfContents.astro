@@ -4,14 +4,14 @@ import NavigationLink from '../components/NavigationLink.astro';
 const { content } = Astro.props;
 ---
 <table-of-contents>
-    <nav class="sidebar-content sidebar-content--simple default--padding-horizontal--100">
+    <nav class="sidebar-content sidebar-content--simple sidebar-content--simple--portrait default--padding-horizontal--100">
         <div class="sidebar-content__sidebar">
             <div class="sticky default--padding-top--100">
                 <span class="detail text--text-small">Selected Work</span>
             </div>
         </div>
     
-        <ul class="sidebar-content__content default--padding-top--100">
+        <ul class="sidebar-content__content default--padding-top--100 portrait--padding-top--0">
             {
                 content.items.map( ( caseStudy, index ) => (
                     <NavigationLink dark="false" scroll="true" slug={ caseStudy.slug } title={ caseStudy.title } year={ caseStudy.year } detail={ caseStudy.detail } count={ index + 1 } />

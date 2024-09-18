@@ -70,21 +70,21 @@
 }
 
 .h1 {
-    @include fontvwclamp( 600, 896, 2000 );
+    @include fontvwclamp( 400, 896, 2000 );
 }
 
 @media ( hover: none ) {
     .h1 {
-        @include fontvwclamp( 600, 906, 2000 );
+        @include fontvwclamp( 400, 906, 2000 );
     }
 }
 
 .h2 {
-    @include fontvwclamp( 400, 600, 800 );
+    @include fontvwclamp( 360, 600, 800 );
 }
 
 .h5 {
-    @include fontvwclamp( 100, 140, 220 );
+    @include fontvwclamp( 88, 140, 220 );
 }
 
 .h6 {
@@ -113,11 +113,11 @@
 }
 
 .h3 {
-    @include fontvwclamp( 72, 120, 280 );
+    @include fontvwclamp( 56, 120, 280 );
 }
 
 .h4 {
-    @include fontvwclamp( 64, 104, 120 );
+    @include fontvwclamp( 48, 104, 120 );
 }
 
 
@@ -243,7 +243,8 @@ em p {
 
 
     &:not(:last-child) {
-        margin-bottom: 1em;
+        // margin-bottom: 1em;
+        margin-bottom: calc( var( --spacing ) * 0.5 );
     }
 
 
@@ -289,6 +290,10 @@ em p {
     // &:not(:last-child) {
     //     margin-bottom: 0.5em;
     // }
+
+    & + .small {
+        margin-top: 0.5em;
+    }
 }
 
 .sidebar-content__detail a {
@@ -373,6 +378,20 @@ a.detail,
         width: 100%;
 
         break-inside: avoid-column;
+
+
+
+        &:last-child {
+            margin-bottom: -0.25em;
+        }
+    }
+
+
+
+    @include breakpoint( portrait ) {
+        columns: 1;
+
+        margin-bottom: 0;
     }
 }
 
