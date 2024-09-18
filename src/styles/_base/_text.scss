@@ -389,9 +389,6 @@ a.detail,
 
 
     p {
-        display: inline-block;
-        width: 100%;
-
         break-inside: avoid-column;
 
 
@@ -407,6 +404,13 @@ a.detail,
         columns: 1;
 
         margin-bottom: 0;
+    }
+}
+
+.safari .columns {
+    p {
+        display: inline-block;
+        width: 100%;
     }
 }
 
