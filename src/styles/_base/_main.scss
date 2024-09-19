@@ -190,22 +190,6 @@ main {
 		normal;
 }
 
-.safari .bkg--media {
-	background:
-		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
-		var( --copy );
-	background-blend-mode:
-		lighten,
-		normal;
-	
-	
-
-	@include breakpoint( mobile ) {
-		background: var( --copy );
-	}
-}
-
-
 .bkg--navigation {
 	background:
 		url( '/images/noise--25.png' ) repeat left top / 200px 200px,
@@ -215,12 +199,16 @@ main {
 		lighten,
 		normal,
 		normal;
+}
 
-	
-
-	@include breakpoint( mobile ) {
-		background: var( --copy );
-	}
+.safari .bkg--media,
+.safari .bkg--navigation {
+	background:
+		url( '/images/bkg/bkg--navigation--safari.webp' ) repeat left top / 200px 200px,
+		var( --copy );
+	background-blend-mode:
+		normal,
+		normal;
 }
 
 
