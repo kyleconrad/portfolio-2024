@@ -1,5 +1,9 @@
 name: Deploy Website
 
+env:
+  $SPACE: ${{ secrets.CONTENTFUL_SPACE_ID }}
+  $TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
+
 on:
   push:
     branches:
