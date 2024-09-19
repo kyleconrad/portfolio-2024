@@ -65,10 +65,6 @@
     }
 }
 
-.h5 {
-    padding-top: calc( var( --vertical-adjustment ) * 2.5 );
-}
-
 .h1 {
     @include fontvwclamp( 400, 896, 2000 );
 }
@@ -85,6 +81,10 @@
 
 .h5 {
     @include fontvwclamp( 88, 140, 220 );
+
+    padding-top: calc( var( --vertical-adjustment ) * 2.5 );
+    padding-left: 1.5px;
+    padding-bottom: calc( var( --vertical-adjustment ) * 1.25 );
 }
 
 .h6 {
