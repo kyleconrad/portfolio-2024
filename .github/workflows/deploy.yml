@@ -19,6 +19,11 @@ jobs:
           aws-region: us-east-1
       - name: Install modules
         run: npm ci
+      - name: Create env file
+        run: |
+          touch .env
+          echo "${{ secrets.ENV_FILE }}" > .env
+          cat .env
       - name: Build application
         run: npm run build
       - name: Deploy to S3
