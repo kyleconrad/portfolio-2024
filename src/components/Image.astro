@@ -1,18 +1,44 @@
 ---
 const { content } = Astro.props;
 
-const srcset = content.url + '?fm=webp&w=800&q=80 800w, ' + content.url + '?fm=webp&w=1200&q=80 1200w, ' + content.url + '?fm=webp&w=1600&q=80 1600w, ' + content.url + '?fm=webp&q=80 ' + content.width + 'w'
+const srcsetAvif =
+    content.url + '?fm=avif&w=800&q=80 800w, ' +
+    content.url + '?fm=avif&w=1200&q=80 1200w, ' +
+    content.url + '?fm=avif&w=1600&q=80 1600w, ' +
+    content.url + '?fm=avif&q=80 ' + content.width + 'w';
+const srcsetWebP =
+    content.url + '?fm=webp&w=800&q=80 800w, ' +
+    content.url + '?fm=webp&w=1200&q=80 1200w, ' +
+    content.url + '?fm=webp&w=1600&q=80 1600w, ' +
+    content.url + '?fm=webp&q=80 ' + content.width + 'w';
+const srcset =
+    content.url + '?w=800&q=80 800w, ' +
+    content.url + '?w=1200&q=80 1200w, ' +
+    content.url + '?w=1600&q=80 1600w, ' +
+    content.url + '?q=80 ' + content.width + 'w';
+
 const sizes = '(max-width: 700px) 800px, (max-width: 1024px) 1200px, (max-width: 1600px) 1600px, ' + content.width + 'px';
 ---
-<img
-    srcset={ srcset }
-    sizes={ sizes }
-    src={ content.url }
-    width={ content.width }
-    height={ content.height }
-    alt={ content.description }
-    decoding="async"
-    loading="lazy"
-    class="z--1"
-    nopin="nopin"
-/>
+<picture class="z--1" nopin="nopin">
+    <source
+        type="image/avif"
+        srcset={ srcsetAvif }
+        sizes={ sizes }
+    />
+    <source
+        type="image/webp"
+        srcset={ srcsetWebP }
+        sizes={ sizes }
+    />
+    <img
+        srcset={ srcset }
+        sizes={ sizes }
+        src={ content.url }
+        width={ content.width }
+        height={ content.height }
+        alt={ content.description }
+        decoding="async"
+        loading="lazy"
+        nopin="nopin"
+    />
+</picture>

@@ -24,10 +24,10 @@
   },
   "homepage": "https://github.com/kyleconrad/portfolio-2024#readme",
   "dependencies": {
-    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/sitemap": "^3.2.0",
     "@contentful/rich-text-html-renderer": "^16.6.10",
     "@playform/compress": "^0.1.1",
-    "astro": "^4.15.6",
+    "astro": "^4.15.11",
     "astro-compressor": "^0.4.1",
     "contentful": "^10.15.1",
     "sass": "^1.78.0"
