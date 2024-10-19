@@ -39,7 +39,7 @@ const { state, color, position } = Astro.props;
 
 
 
-    navControls.forEach( ( control ) => {
+    [ ...navControls ].forEach( control => {
         control.addEventListener( 'click', ( e ) => {
             $nav.scrollTo({
                 top: 0,

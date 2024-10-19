@@ -92,19 +92,19 @@ const { title, description, image, url } = Astro.props;
     function widowControl( width ) {
         let 	widowElements = document.querySelectorAll<HTMLParagraphElement>( 'p' );
 
-        widowElements.forEach( function( element ) {
+        [ ...widowElements ].forEach( element => {
             element.innerHTML = element.innerHTML.replace( /&nbsp;/g, ' ' );
         });
 
         if ( width > 700 ) {
-            widowElements.forEach( function( element ) {
+            [ ...widowElements ].forEach( element => {
                 element.innerHTML = element.innerHTML.replace( /\s((?=(([^\s<>]|<[^>]*>)+))\2)\s*$/, '&nbsp;$1' );
             });
         }
     }
 
     function swapIcons( sizes, color ) {
-        sizes.forEach( ( size ) => {
+        [ ...sizes ].forEach( size => {
             const link = document.querySelector<HTMLLinkElement>( '#fav' + size );
 
             link.href = '/icons/favicon' + size + '-' + color + '.svg';
