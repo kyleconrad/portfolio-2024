@@ -28,6 +28,8 @@ const { content } = Astro.props;
 
             const   links = this.querySelectorAll<HTMLAnchorElement>( '.navigation-link' );
 
+
+                
             [ ...links ].forEach( link => {
                 link.addEventListener( 'click', ( e ) => {
                     console.log( link );

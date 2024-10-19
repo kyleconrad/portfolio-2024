@@ -8,34 +8,80 @@ import SocialLink from '../components/SocialLink.astro';
 
 const navigation = await contentfulGraphQLClient.getNavigation();
 ---
-<nav id="navigation" class="navigation bkg--navigation">
-    <NavigationButton state="close" color="light" position="fixed" />
+<navigation-menu>
+    <nav id="navigation" class="navigation bkg--navigation">
+        <NavigationButton state="close" color="light" position="fixed" />
 
-    <div class="default--padding-top--100">
-        <Marquee tag="span" style="h2" content={ navigation.title } />
-    </div>
-
-    <div class="sidebar-content sidebar-content--navigation--portrait sidebar-content--navigation--mobile default--padding-horizontal--100 default--padding-bottom--100 portrait--padding-bottom--0 mobile--padding-horizontal--0 mobile--padding-bottom--100">
-        <div class="sidebar-content__sidebar">
-            <div class="sticky default--padding-top--100 mobile--padding-horizontal--100">
-                <span class="detail text--text-small-dark">{ navigation.detail }</span>
-            </div>
+        <div class="default--padding-top--100">
+            <Marquee tag="span" style="h2" content={ navigation.title } />
         </div>
 
-        <ul class="sidebar-content__detail portrait--padding-top--100 mobile--padding-top--0 mobile--padding-horizontal--100">
-            {
-                navigation.socialMediaCollection.items.map( ( link, index ) => (
-                    <SocialLink dark="true" content={ link } count={ index + 1 } />
-                ))
-            }
-        </ul>
+        <div class="sidebar-content sidebar-content--navigation--portrait sidebar-content--navigation--mobile default--padding-horizontal--100 default--padding-bottom--100 portrait--padding-bottom--0 mobile--padding-horizontal--0 mobile--padding-bottom--100">
+            <div class="sidebar-content__sidebar">
+                <div class="sticky default--padding-top--100 mobile--padding-horizontal--100">
+                    <span class="detail text--text-small-dark">{ navigation.detail }</span>
+                </div>
+            </div>
 
-        <ul class="sidebar-content__content default--padding-top--100 portrait--padding-top--0">
-            {
-                navigation.linksCollection.items.map( ( link, index ) => (
-                    <NavigationLink dark="true" slug={ link.slug } title={ link.title } year={ link.year } detail={ link.detail } count={ index + 1 } />
-                ))
+            <ul class="sidebar-content__detail portrait--padding-top--100 mobile--padding-top--0 mobile--padding-horizontal--100">
+                {
+                    navigation.socialMediaCollection.items.map( ( link, index ) => (
+                        <SocialLink dark="true" content={ link } count={ index + 1 } />
+                    ))
+                }
+            </ul>
+
+            <ul class="sidebar-content__content default--padding-top--100 portrait--padding-top--0">
+                {
+                    navigation.linksCollection.items.map( ( link, index ) => (
+                        <NavigationLink dark="true" slug={ link.slug } title={ link.title } year={ link.year } detail={ link.detail } count={ index + 1 } />
+                    ))
+                }
+            </ul>
+        </div>
+    </nav>
+</navigation-menu>
+
+<script>
+    class NavigationMenu extends HTMLElement {
+        constructor() {
+            super();
+
+            const   links = this.querySelectorAll<HTMLAnchorElement>( '.navigation-link' );
+
+            let     prefetchArray = [];
+
+
+
+            [ ...links ].forEach( link => {
+                link.addEventListener( 'mouseover', () => {
+                    prefetchUrl( link, prefetchArray );
+                });
+
+                link.addEventListener( 'touchstart', () => {
+                    prefetchUrl( link, prefetchArray );
+                });
+            });
+
+
+
+            function prefetchUrl( link, array ) {
+                const   href = link.href;
+
+
+                if ( !array.includes( href ) ) {
+                    const   prefetch = document.createElement( 'link' );
+
+                    prefetch.rel = 'prefetch';
+                    prefetch.href = href;
+
+                    document.head.appendChild( prefetch );
+
+                    array.push( href );
+                }
             }
-        </ul>
-    </div>
-</nav>
+        }
+    }
+
+    customElements.define( 'navigation-menu', NavigationMenu );
+</script>

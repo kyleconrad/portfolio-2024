@@ -82,7 +82,7 @@
 .h5 {
     @include fontvwclamp( 88, 140, 220 );
 
-    padding-top: calc( var( --vertical-adjustment ) * 2.5 );
+    padding-top: calc( var( --vertical-adjustment ) * 3.25 );
     padding-left: 1.5px;
     padding-bottom: calc( var( --vertical-adjustment ) * 1.25 );
 }
