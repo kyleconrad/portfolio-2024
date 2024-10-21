@@ -1,0 +1,21 @@
+---
+import { contentfulGraphQLClient } from "../lib/contentful";
+
+import Head from '../components/Head.astro';
+
+const home = await contentfulGraphQLClient.getHome();
+
+const metadataTitle = '404 | ' + home.metadataTitle;
+---
+<html lang="en">
+    <Head
+        title={ metadataTitle }
+    />
+
+    <body class="bkg--fill">
+    </body>
+</html>
+
+<script>
+    window.location.replace( '/' );
+</script>
